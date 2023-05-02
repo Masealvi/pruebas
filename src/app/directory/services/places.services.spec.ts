@@ -4,19 +4,19 @@ import {
 } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TestBed } from '@angular/core/testing';
-import { ComparativeService } from './comparative.service';
+import { PlacesService } from './places.service';
 
-describe('ComparativeService', () => {
-  let service: ComparativeService;
+describe('PlacesService', () => {
+  let service: PlacesService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, RouterTestingModule],
-      providers: [ComparativeService],
+      providers: [PlacesService],
     });
 
-    service = TestBed.get(ComparativeService);
+    service = TestBed.get(PlacesService);
     httpMock = TestBed.get(HttpTestingController);
   });
 

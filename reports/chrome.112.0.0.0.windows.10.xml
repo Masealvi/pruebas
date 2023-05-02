@@ -1,325 +1,481 @@
 <?xml version='1.0'?>
 <testExecutions version='1'>
+    <file path='src/app/directory/services/data.service.spec.ts'>
+        <testCase name='DataService should be created' duration='14'/>
+    </file>
     <file path='src/app/apps.component.spec.ts'>
-        <testCase name='prueba SummaryComponent Component SummaryComponent' duration='363'/>
-        <testCase name='prueba SummaryComponent Component getYear' duration='60'/>
-        <testCase name='prueba SummaryComponent Component getIndicatorMultilateral' duration='49'/>
-        <testCase name='MapComponent Component MapComponent' duration='24'/>
-        <testCase name='prueba DetailByDepartmentComponent component DetailByDepartmentComponent' duration='32'/>
-        <testCase name='prueba TabMainMComponent component TabMainMComponent' duration='99'/>
-        <testCase name='prueba TabMainMComponent funxtion getCodeFromURL' duration='44'/>
-        <testCase name='prueba TabMainMComponent funxtion getRouterParam' duration='34'/>
-        <testCase name='prueba WorldComparisonComponent Function getIndicatorMultilateralWorld' duration='64'/>
-        <testCase name='prueba WorldComparisonComponent Function removeChip' duration='15'/>
-        <testCase name='prueba WorldComparisonComponent Component WorldComparisonComponent' duration='24'/>
-        <testCase name='prueba WorldComparisonComponent Function getFiltrosAplicados' duration='18'/>
-        <testCase name='prueba PatentsComponent Component PatentsComponent' duration='46'/>
-        <testCase name='prueba ComparativeComponent function getFiltrosAplicados' duration='86'/>
-        <testCase name='prueba ComparativeComponent function graficar' duration='17'/>
-        <testCase name='prueba ComparativeComponent Component ComparativeComponent' duration='11'/>
-        <testCase name='prueba AirTransportComponent Component AirTransportComponent' duration='77'/>
-        <testCase name='prueba AirTransportComponent Component getIndicatorMultilateralAir' duration='13'/>
-        <testCase name='prueba AirTransportComponent Component getMedidaFiltradoAir' duration='9'/>
-        <testCase name='prueba AirTransportComponent Component AirTransportComponent' duration='19'/>
-        <testCase name='prueba AirTransportComponent Component getFiltrosAplicadosAir' duration='19'/>
-        <testCase name='prueba AirTransportComponent Component graficarAir' duration='67'/>
-        <testCase name='prueba AirTransportComponent Component changeSelectorAir' duration='33'/>
-        <testCase name='prueba DetailByDepartmentComponent component DetailByDepartmentComponent' duration='18'/>
-        <testCase name='prueba GrafhicsComponent component filterByYearAndCompany' duration='183'/>
-        <testCase name='prueba GrafhicsComponent component GrafhicsComponent' duration='9'/>
-        <testCase name='prueba TabMainMComponent funxtion getRouterParam' duration='88'/>
-        <testCase name='prueba TabMainMComponent funxtion getCodeFromURL' duration='15'/>
-        <testCase name='prueba TabMainMComponent component TabMainMComponent' duration='29'/>
-        <testCase name='prueba MarineTransportComponent function removeChip' duration='98'/>
-        <testCase name='prueba MarineTransportComponent function getFiltrosAplicados' duration='7'/>
-        <testCase name='prueba MarineTransportComponent Component MarineTransportComponent' duration='10'/>
-        <testCase name='prueba TabMainNComponent component TabMainNComponent' duration='28'/>
-        <testCase name='prueba ComparativeComponent function getFiltrosAplicados' duration='37'/>
-        <testCase name='prueba ComparativeComponent function graficar' duration='8'/>
-        <testCase name='prueba ComparativeComponent Component ComparativeComponent' duration='6'/>
-        <testCase name='prueba NavGraphicsComponent component NavGraphicsComponent' duration='12'/>
-        <testCase name='prueba AirTransportComponent Component getMedidaFiltradoAir' duration='27'/>
-        <testCase name='prueba AirTransportComponent Component getIndicatorMultilateralAir' duration='10'/>
-        <testCase name='prueba AirTransportComponent Component getFiltrosAplicadosAir' duration='6'/>
-        <testCase name='prueba AirTransportComponent Component AirTransportComponent' duration='12'/>
-        <testCase name='prueba AirTransportComponent Component AirTransportComponent' duration='8'/>
-        <testCase name='prueba AirTransportComponent Component changeSelectorAir' duration='9'/>
-        <testCase name='prueba AirTransportComponent Component graficarAir' duration='7'/>
-        <testCase name='prueba ComparisonByMeasuresComponent Component ComparisonByMeasuresComponent' duration='24'/>
-        <testCase name='prueba RailwaysComponent Component RailwaysComponent' duration='43'/>
-        <testCase name='Testing environment.prod should have correct values' duration='0'/>
-        <testCase name='prueba SummaryComponent Component getYear' duration='23'/>
-        <testCase name='prueba SummaryComponent Component SummaryComponent' duration='10'/>
-        <testCase name='prueba SummaryComponent Component getIndicatorMultilateral' duration='11'/>
-        <testCase name='prueba PositioningComponent Component PositioningComponent' duration='31'/>
-        <testCase name='prueba PositioningComponent Component getFiltrosAplicados' duration='7'/>
-        <testCase name='TabComparativeComponent function ordenamiento' duration='221'/>
-        <testCase name='TabComparativeComponent function onSelect_11' duration='98'/>
-        <testCase name='TabComparativeComponent function buscar' duration='98'/>
-        <testCase name='TabComparativeComponent function onSelect_16' duration='68'/>
-        <testCase name='TabComparativeComponent function onSelect_13' duration='124'/>
-        <testCase name='TabComparativeComponent function onSelect_10' duration='40'/>
-        <testCase name='TabComparativeComponent function onSelect_12' duration='83'/>
-        <testCase name='TabComparativeComponent function onSelect' duration='64'/>
-        <testCase name='TabComparativeComponent function onSelect_1' duration='87'/>
-        <testCase name='TabComparativeComponent function removeChip' duration='63'/>
-        <testCase name='TabComparativeComponent function onSelect_20' duration='157'/>
-        <testCase name='TabComparativeComponent function onSelect_15' duration='50'/>
-        <testCase name='TabComparativeComponent function imprimir' duration='8380'/>
-        <testCase name='TabComparativeComponent function onSelect_7' duration='288'/>
-        <testCase name='TabComparativeComponent function onSelect_14' duration='95'/>
-        <testCase name='TabComparativeComponent function verEmpresa' duration='61'/>
-        <testCase name='TabComparativeComponent function limpiarDatosSelect' duration='56'/>
-        <testCase name='TabComparativeComponent function onSelect_19' duration='92'/>
-        <testCase name='TabComparativeComponent function cambiarPagina' duration='107'/>
-        <testCase name='TabComparativeComponent Tab-Comparative' duration='38'/>
-        <testCase name='TabComparativeComponent function onSelect_9' duration='98'/>
-        <testCase name='TabComparativeComponent function getMensajeModal' duration='73'/>
-        <testCase name='TabComparativeComponent function getFiltrosAplicados' duration='57'/>
-        <testCase name='TabComparativeComponent function cambiarPaginaEmpresa' duration='105'/>
-        <testCase name='TabComparativeComponent function limpiarSelect' duration='71'/>
-        <testCase name='prueba PatentsComponent Component PatentsComponent' duration='76'/>
-        <testCase name='prueba WorldComparisonComponent Function getIndicatorMultilateralWorld' duration='39'/>
-        <testCase name='prueba WorldComparisonComponent Function removeChip' duration='14'/>
-        <testCase name='prueba WorldComparisonComponent Function getFiltrosAplicados' duration='33'/>
-        <testCase name='prueba WorldComparisonComponent Component WorldComparisonComponent' duration='36'/>
-        <testCase name='prueba TableComponent should return &apos;getIndicatorTableByCode ind1&apos;' duration='572'/>
-        <testCase name='prueba TableComponent should return &apos;cambiarPagina&apos;' duration='21'/>
-        <testCase name='prueba TableComponent should return &apos;getIndicatorTableByCode&apos;' duration='18'/>
-        <testCase name='prueba TableComponent should return &apos;buildFormForYears&apos;' duration='39'/>
-        <testCase name='prueba TableComponent should return an observable' duration='37'/>
-        <testCase name='prueba TableComponent should return &apos;filterByThreeLabels valores&apos;' duration='20'/>
-        <testCase name='prueba TableComponent should return &apos;filterByEightLabels&apos;' duration='32'/>
-        <testCase name='prueba TableComponent should return &apos;filterByYearAndCompany&apos;' duration='30'/>
-        <testCase name='prueba TableComponent should return &apos;filterByThreeLabels&apos;' duration='45'/>
-        <testCase name='prueba TableComponent component TableComponent' duration='147'/>
-        <testCase name='prueba TableComponent should return &apos;filterByfourLabels&apos;' duration='34'/>
-        <testCase name='prueba TableComponent should return &apos;buildFormdataNameClass&apos;' duration='32'/>
-        <testCase name='prueba TabMainNComponent component TabMainNComponent' duration='172'/>
-        <testCase name='Testing environment.prod should have correct values' duration='1'/>
-        <testCase name='MapAllComponent Tab-Directory' duration='183'/>
-        <testCase name='prueba RailwaysComponent Component RailwaysComponent' duration='164'/>
-        <testCase name='TabComparativeComponent function onSelect_13' duration='403'/>
-        <testCase name='TabComparativeComponent function onSelect_15' duration='107'/>
-        <testCase name='TabComparativeComponent function onSelect_16' duration='168'/>
-        <testCase name='TabComparativeComponent function onSelect_7' duration='106'/>
-        <testCase name='TabComparativeComponent Tab-Comparative' duration='82'/>
-        <testCase name='TabComparativeComponent function onSelect_14' duration='168'/>
-        <testCase name='TabComparativeComponent function onSelect' duration='171'/>
-        <testCase name='TabComparativeComponent function onSelect_10' duration='86'/>
-        <testCase name='TabComparativeComponent function getMensajeModal' duration='566'/>
-        <testCase name='TabComparativeComponent function onSelect_20' duration='91'/>
-        <testCase name='TabComparativeComponent function onSelect_11' duration='74'/>
-        <testCase name='TabComparativeComponent function limpiarSelect' duration='147'/>
-        <testCase name='TabComparativeComponent function onSelect_9' duration='105'/>
-        <testCase name='TabComparativeComponent function onSelect_1' duration='119'/>
-        <testCase name='TabComparativeComponent function onSelect_12' duration='112'/>
-        <testCase name='TabComparativeComponent function verEmpresa' duration='61'/>
-        <testCase name='TabComparativeComponent function onSelect_19' duration='57'/>
-        <testCase name='TabComparativeComponent function ordenamiento' duration='140'/>
-        <testCase name='TabComparativeComponent function cambiarPaginaEmpresa' duration='94'/>
-        <testCase name='TabComparativeComponent function buscar' duration='119'/>
-        <testCase name='TabComparativeComponent function limpiarDatosSelect' duration='97'/>
-        <testCase name='TabComparativeComponent function cambiarPagina' duration='90'/>
-        <testCase name='TabComparativeComponent function removeChip' duration='84'/>
-        <testCase name='TabComparativeComponent function getFiltrosAplicados' duration='80'/>
-        <testCase name='TabComparativeComponent function onSelect_11' duration='466'/>
-        <testCase name='prueba TabMainMComponent funxtion getCodeFromURL' duration='21'/>
-        <testCase name='prueba TabMainMComponent component TabMainMComponent' duration='21'/>
-        <testCase name='prueba DetailByDepartmentComponent component DetailByDepartmentComponent' duration='9'/>
-        <testCase name='prueba ComparisonByMeasuresComponent Component ComparisonByMeasuresComponent' duration='44'/>
-        <testCase name='prueba MarineTransportComponent Component MarineTransportComponent' duration='57'/>
-        <testCase name='prueba MarineTransportComponent function getFiltrosAplicados' duration='9'/>
-        <testCase name='prueba MarineTransportComponent function removeChip' duration='9'/>
-        <testCase name='prueba GrafhicsComponent component GrafhicsComponent' duration='148'/>
-        <testCase name='prueba GrafhicsComponent component filterByYearAndCompany' duration='16'/>
-        <testCase name='prueba AirTransportComponent Component getMedidaFiltradoAir' duration='40'/>
-        <testCase name='prueba AirTransportComponent Component AirTransportComponent' duration='10'/>
-        <testCase name='prueba AirTransportComponent Component graficarAir' duration='11'/>
-        <testCase name='prueba AirTransportComponent Component getFiltrosAplicadosAir' duration='8'/>
-        <testCase name='prueba AirTransportComponent Component changeSelectorAir' duration='8'/>
-        <testCase name='prueba AirTransportComponent Component AirTransportComponent' duration='8'/>
-        <testCase name='prueba AirTransportComponent Component getIndicatorMultilateralAir' duration='8'/>
-        <testCase name='prueba PatentsComponent Component PatentsComponent' duration='33'/>
-        <testCase name='prueba SheetComponent component SheetComponent' duration='21'/>
-        <testCase name='TabDirectoryComponent function getFiltrosAplicados' duration='256'/>
-        <testCase name='TabDirectoryComponent function removeChip' duration='101'/>
-        <testCase name='TabDirectoryComponent function ordenamiento' duration='44'/>
-        <testCase name='TabDirectoryComponent function removeChip' duration='35'/>
-        <testCase name='TabDirectoryComponent Tab-Directory' duration='59'/>
-        <testCase name='TabDirectoryComponent function buscarPorLetra' duration='52'/>
-        <testCase name='TabDirectoryComponent function getMasInformacion' duration='37'/>
-        <testCase name='TabDirectoryComponent function getFiltrosAplicados2' duration='49'/>
-        <testCase name='TabDirectoryComponent function buscar' duration='45'/>
-        <testCase name='TabComparativeComponent function onSelect' duration='240'/>
-        <testCase name='TabComparativeComponent function onSelect_19' duration='50'/>
-        <testCase name='TabComparativeComponent function onSelect_9' duration='44'/>
-        <testCase name='TabComparativeComponent function onSelect_20' duration='31'/>
-        <testCase name='TabComparativeComponent function onSelect_1' duration='19'/>
-        <testCase name='TabComparativeComponent function onSelect_12' duration='27'/>
-        <testCase name='TabComparativeComponent function onSelect_13' duration='26'/>
-        <testCase name='TabComparativeComponent function onSelect_10' duration='100'/>
-        <testCase name='TabComparativeComponent function onSelect_16' duration='38'/>
-        <testCase name='TabComparativeComponent function onSelect_11' duration='20'/>
-        <testCase name='prueba RailwaysComponent Component RailwaysComponent' duration='35'/>
-        <testCase name='Testing environment.prod should have correct values' duration='1'/>
-        <testCase name='prueba NavGraphicsComponent component NavGraphicsComponent' duration='30'/>
-        <testCase name='prueba TableComponent component TableComponent' duration='139'/>
-        <testCase name='prueba TableComponent should return &apos;filterByThreeLabels&apos;' duration='37'/>
-        <testCase name='prueba TableComponent should return &apos;getIndicatorTableByCode&apos;' duration='15'/>
-        <testCase name='prueba TableComponent should return &apos;buildFormdataNameClass&apos;' duration='99'/>
-        <testCase name='prueba TableComponent should return &apos;getIndicatorTableByCode ind1&apos;' duration='30'/>
-        <testCase name='prueba TableComponent should return &apos;buildFormForYears&apos;' duration='21'/>
-        <testCase name='prueba TableComponent should return &apos;filterByfourLabels&apos;' duration='47'/>
-        <testCase name='prueba TableComponent should return an observable' duration='18'/>
-        <testCase name='prueba TableComponent should return &apos;filterByThreeLabels valores&apos;' duration='17'/>
-        <testCase name='prueba TableComponent should return &apos;filterByYearAndCompany&apos;' duration='20'/>
-        <testCase name='prueba TableComponent should return &apos;cambiarPagina&apos;' duration='24'/>
-        <testCase name='prueba TableComponent should return &apos;filterByEightLabels&apos;' duration='40'/>
-        <testCase name='prueba TabMainNComponent component TabMainNComponent' duration='57'/>
-        <testCase name='prueba WorldComparisonComponent Function getFiltrosAplicados' duration='56'/>
-        <testCase name='prueba WorldComparisonComponent Component WorldComparisonComponent' duration='15'/>
-        <testCase name='prueba WorldComparisonComponent Function getIndicatorMultilateralWorld' duration='25'/>
-        <testCase name='prueba WorldComparisonComponent Function removeChip' duration='21'/>
-    </file>
-    <file path='src/app/comparative/tab-comparative/services/comparative.service.spec.ts'>
-        <testCase name='Service: Post service Tab-Comparative' duration='8'/>
-        <testCase name='Service: Post service Tab-Comparative' duration='2'/>
-        <testCase name='Service: Post service Tab-Comparative' duration='5'/>
-        <testCase name='Service: Post service Tab-Comparative' duration='5'/>
-    </file>
-    <file path='src/app/app.component.spec.ts'>
-        <testCase name='AppComponent should have as title &apos;front-olce&apos;' duration='18'/>
-        <testCase name='AppComponent should render title' duration='6'/>
-        <testCase name='AppComponent should create the app' duration='48'/>
-        <testCase name='AppComponent should render title' duration='10'/>
-        <testCase name='AppComponent should have as title &apos;front-olce&apos;' duration='6'/>
-        <testCase name='AppComponent should create the app' duration='9'/>
+        <testCase name='MapComponent Component MapComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba ComparativeComponent function getFiltrosAplicados' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba ComparativeComponent Component ComparativeComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba ComparativeComponent function graficar' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba DetailByDepartmentComponent component DetailByDepartmentComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect_9' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function limpiarDatosSelect' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function imprimir' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function cambiarPagina' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function removeChip' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect_10' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect_12' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect_19' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect_20' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function limpiarSelect' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect_14' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect_13' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent Tab-Comparative' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect_7' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function buscar' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect_1' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function getFiltrosAplicados' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function getMensajeModal' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect_16' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function ordenamiento' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function cambiarPaginaEmpresa' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect_11' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function verEmpresa' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent function onSelect_15' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TabMainMComponent funxtion getRouterParam' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TabMainMComponent component TabMainMComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TabMainMComponent funxtion getCodeFromURL' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba AirTransportComponent Component AirTransportComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba AirTransportComponent Component getFiltrosAplicadosAir' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba AirTransportComponent Component graficarAir' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba AirTransportComponent Component changeSelectorAir' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba AirTransportComponent Component AirTransportComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba AirTransportComponent Component getMedidaFiltradoAir' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba AirTransportComponent Component getIndicatorMultilateralAir' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='Testing environment.prod should have correct values' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabDirectoryComponent function buscar' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabDirectoryComponent function buscarPorLetra' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabDirectoryComponent function removeChip' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabDirectoryComponent function getFiltrosAplicados' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabDirectoryComponent function removeChip' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabDirectoryComponent Tab-Directory' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabDirectoryComponent function getFiltrosAplicados2' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabDirectoryComponent function ordenamiento' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabDirectoryComponent function buscarCoincidencias' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabDirectoryComponent function getMasInformacion' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba GrafhicsComponent component filterByYearAndCompany' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba GrafhicsComponent component GrafhicsComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='MapAllComponent Tab-Directory' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba NavGraphicsComponent component NavGraphicsComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba SummaryComponent Component SummaryComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba SummaryComponent Component getIndicatorMultilateral' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba SummaryComponent Component getYear' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba RailwaysComponent Component RailwaysComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TableComponent should return &apos;filterByfourLabels&apos;' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TableComponent should return an observable' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TableComponent should return &apos;filterByEightLabels&apos;' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TableComponent should return &apos;getIndicatorTableByCode&apos;' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TableComponent should return &apos;cambiarPagina&apos;' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TableComponent component TableComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TableComponent should return &apos;buildFormdataNameClass&apos;' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TableComponent should return &apos;filterByThreeLabels&apos;' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TableComponent should return &apos;filterByThreeLabels valores&apos;' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TableComponent should return &apos;getIndicatorTableByCode ind1&apos;' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TableComponent should return &apos;filterByYearAndCompany&apos;' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TableComponent should return &apos;buildFormForYears&apos;' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba PositioningComponent Component PositioningComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba PositioningComponent Component getFiltrosAplicados' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba SheetComponent component SheetComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba MarineTransportComponent Component MarineTransportComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba MarineTransportComponent function getFiltrosAplicados' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba MarineTransportComponent function removeChip' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba ComparisonByMeasuresComponent Component ComparisonByMeasuresComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba TabMainNComponent component TabMainNComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba WorldComparisonComponent Function getIndicatorMultilateralWorld' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba WorldComparisonComponent Component WorldComparisonComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba WorldComparisonComponent Function getFiltrosAplicados' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba WorldComparisonComponent Function removeChip' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba PatentsComponent Component PatentsComponent' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
     </file>
     <file path='src/app/tests.service.spec.ts'>
-        <testCase name='IndicadorMultilateralService: Post Service IndicadorMultilateralService' duration='4'/>
-        <testCase name='prueba Graficas function generateSerieDonutChart' duration='3'/>
-        <testCase name='prueba Graficas function genarateDonutChart' duration='3'/>
-        <testCase name='prueba Graficas function generateTable3' duration='5'/>
-        <testCase name='prueba Graficas function generateBarChart2' duration='9'/>
-        <testCase name='prueba Graficas function generateTable' duration='4'/>
-        <testCase name='prueba Graficas function generateTable2' duration='11'/>
-        <testCase name='prueba Graficas function generateSerie2' duration='9'/>
-        <testCase name='prueba Graficas function genarateSpiderChart' duration='4'/>
-        <testCase name='prueba Graficas function generateColumnChart' duration='12'/>
-        <testCase name='prueba Graficas function generateLineChart' duration='11'/>
-        <testCase name='prueba Graficas function generateBarChart' duration='476'>
-            <failure message='TestCase failed'>TypeError: Cannot read properties of undefined (reading 'data')
-    at Function.getHeightChart (src/app/utils/graficas.ts:136:20)
-    at Function.Graficas [as generateBarChart] (src/app/utils/graficas.ts:144:18)
-    at UserContext.&lt;anonymous> (src/app/tests.service.spec.ts:51:12)
-    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:1)
-    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:1)
-    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:1)
-    at Zone.run (node_modules/zone.js/fesm2015/zone.js:134:1)
-    at runInTestZone (node_modules/zone.js/fesm2015/zone-testing.js:582:1)
-    at UserContext.&lt;anonymous> (node_modules/zone.js/fesm2015/zone-testing.js:597:1)
-    at &lt;Jasmine>
-</failure>
+        <testCase name='PlacesService: GET debe crearse correctamente PlacesService' duration='0'>
+            <skipped message='TestCase skipped'/>
         </testCase>
-        <testCase name='prueba Graficas function generateCategory' duration='5'/>
-        <testCase name='prueba Graficas function generateSerieSpider' duration='2'/>
-        <testCase name='prueba Graficas function ejeYSpider' duration='4'/>
-        <testCase name='SendCodeService: GET Servicio SendCode' duration='4'/>
-        <testCase name='ComparativeService: GET Service ComparativeService' duration='2'/>
-        <testCase name='PlacesService: GET function getFiltroDirectory' duration='0'/>
-        <testCase name='PlacesService: GET debe crearse correctamente PlacesService' duration='0'/>
-        <testCase name='MapService: GET prueba MapService' duration='6'/>
-        <testCase name='IndicadorChildToParentService: Get should call if' duration='1'/>
-        <testCase name='IndicadorChildToParentService: Get should be created IndicadorChildToParentService' duration='1'/>
-        <testCase name='IndicadorChildToParentService: Get should call onChangeIndicadorSub when onChangeIndicador$ is emitted' duration='1'/>
-        <testCase name='Testing environment.desa should have correct values' duration='0'/>
-        <testCase name='GrafhicsService: Get  prueba GrafhicsService' duration='3'/>
-        <testCase name='MultilateralsRoutingModule: GET prueba router' duration='19'/>
-        <testCase name='DirectoryService: GET service: DirectoryService' duration='4'/>
-        <testCase name='DirectoryService: GET function getFiltroDirectory' duration='13'/>
-        <testCase name='DirectoryService: GET function groupchips' duration='8'/>
-        <testCase name='ComparativeService: GET Service ComparativeService' duration='70'/>
-        <testCase name='prueba Utilidades function removeChip' duration='8'/>
-        <testCase name='prueba Utilidades function generateCategory' duration='34'/>
-        <testCase name='prueba Utilidades function compararPais' duration='14'/>
-        <testCase name='prueba Utilidades function getCountries' duration='6'/>
-        <testCase name='prueba Utilidades function getYears' duration='3'/>
-        <testCase name='prueba Utilidades function procesarDataChart' duration='5'/>
-        <testCase name='MultilateralsRoutingModule: GET prueba router' duration='34'/>
-        <testCase name='Testing environment.desa should have correct values' duration='2'/>
-        <testCase name='prueba Graficas function generateSerieDonutChart' duration='6'/>
-        <testCase name='prueba Graficas function genarateDonutChart' duration='5'/>
-        <testCase name='prueba Graficas function generateCategory' duration='8'/>
-        <testCase name='prueba Graficas function generateTable3' duration='12'/>
-        <testCase name='prueba Graficas function generateColumnChart' duration='7'/>
-        <testCase name='prueba Graficas function ejeYSpider' duration='19'/>
-        <testCase name='prueba Graficas function generateLineChart' duration='4'/>
-        <testCase name='prueba Graficas function generateSerie2' duration='7'/>
-        <testCase name='prueba Graficas function generateBarChart' duration='564'>
-            <failure message='TestCase failed'>TypeError: Cannot read properties of undefined (reading 'data')
-    at Function.getHeightChart (src/app/utils/graficas.ts:136:20)
-    at Function.Graficas [as generateBarChart] (src/app/utils/graficas.ts:144:18)
-    at UserContext.&lt;anonymous> (src/app/tests.service.spec.ts:51:12)
-    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:1)
-    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:1)
-    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:1)
-    at Zone.run (node_modules/zone.js/fesm2015/zone.js:134:1)
-    at runInTestZone (node_modules/zone.js/fesm2015/zone-testing.js:582:1)
-    at UserContext.&lt;anonymous> (node_modules/zone.js/fesm2015/zone-testing.js:597:1)
-    at &lt;Jasmine>
-</failure>
+        <testCase name='PlacesService: GET function getFiltroDirectory' duration='0'>
+            <skipped message='TestCase skipped'/>
         </testCase>
-        <testCase name='prueba Graficas function generateTable2' duration='191'/>
-        <testCase name='prueba Graficas function generateTable' duration='5'/>
-        <testCase name='prueba Graficas function generateBarChart2' duration='6'/>
-        <testCase name='prueba Graficas function generateSerieSpider' duration='5'/>
-        <testCase name='prueba Graficas function genarateSpiderChart' duration='5'/>
-        <testCase name='MapService: GET prueba MapService' duration='4'/>
-        <testCase name='prueba Graficas function generateLineChart' duration='6'/>
-        <testCase name='prueba Graficas function generateColumnChart' duration='3'/>
-        <testCase name='prueba Graficas function generateTable' duration='3'/>
-        <testCase name='prueba Graficas function generateSerie2' duration='3'/>
-        <testCase name='prueba Graficas function generateCategory' duration='2'/>
-        <testCase name='prueba Graficas function generateBarChart2' duration='3'/>
-        <testCase name='prueba Graficas function generateBarChart' duration='10'>
-            <failure message='TestCase failed'>TypeError: Cannot read properties of undefined (reading 'data')
-    at Function.getHeightChart (src/app/utils/graficas.ts:136:20)
-    at Function.Graficas [as generateBarChart] (src/app/utils/graficas.ts:144:18)
-    at UserContext.&lt;anonymous> (src/app/tests.service.spec.ts:51:12)
-    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:372:1)
-    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:287:1)
-    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:371:1)
-    at Zone.run (node_modules/zone.js/fesm2015/zone.js:134:1)
-    at runInTestZone (node_modules/zone.js/fesm2015/zone-testing.js:582:1)
-    at UserContext.&lt;anonymous> (node_modules/zone.js/fesm2015/zone-testing.js:597:1)
-    at &lt;Jasmine>
-</failure>
+        <testCase name='MapService: GET prueba MapService' duration='0'>
+            <skipped message='TestCase skipped'/>
         </testCase>
-        <testCase name='prueba Graficas function generateSerieSpider' duration='8'/>
-        <testCase name='prueba Graficas function generateTable3' duration='6'/>
-        <testCase name='prueba Graficas function genarateSpiderChart' duration='3'/>
-        <testCase name='prueba Graficas function genarateDonutChart' duration='3'/>
-        <testCase name='prueba Graficas function generateTable2' duration='3'/>
-        <testCase name='prueba Graficas function generateSerieDonutChart' duration='4'/>
-        <testCase name='prueba Graficas function ejeYSpider' duration='2'/>
-        <testCase name='prueba Utilidades function compararPais' duration='5'/>
-        <testCase name='prueba Utilidades function removeChip' duration='3'/>
-        <testCase name='prueba Utilidades function procesarDataChart' duration='7'/>
-        <testCase name='prueba Utilidades function getYears' duration='3'/>
-        <testCase name='prueba Utilidades function getCountries' duration='3'/>
-        <testCase name='prueba Utilidades function generateCategory' duration='2'/>
-        <testCase name='GrafhicsService: Get  prueba GrafhicsService' duration='4'/>
-        <testCase name='ComparativeService: GET Service ComparativeService' duration='3'/>
-        <testCase name='PlacesService: GET function getFiltroDirectory' duration='0'/>
-        <testCase name='PlacesService: GET debe crearse correctamente PlacesService' duration='1'/>
-        <testCase name='SendCodeService: GET Servicio SendCode' duration='5'/>
-        <testCase name='IndicadorMultilateralService: Post Service IndicadorMultilateralService' duration='2'/>
-        <testCase name='IndicadorChildToParentService: Get should be created IndicadorChildToParentService' duration='0'/>
-        <testCase name='IndicadorChildToParentService: Get should call onChangeIndicadorSub when onChangeIndicador$ is emitted' duration='0'/>
-        <testCase name='IndicadorChildToParentService: Get should call if' duration='0'/>
-        <testCase name='DataService : GET Service DataService ' duration='3'/>
-        <testCase name='Testing environment.desa should have correct values' duration='16'/>
-        <testCase name='MultilateralsRoutingModule: GET prueba router' duration='51'/>
+        <testCase name='DirectoryService: GET service: DirectoryService' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='DirectoryService: GET function getFiltroDirectory' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='DirectoryService: GET function groupchips' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='MultilateralsRoutingModule: GET prueba router' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function generateColumnChart' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function generateLineChart' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function generateCategory' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function generateBarChart2' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function generateBarChart' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function generateTable' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function generateSerie2' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function genarateDonutChart' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function genarateSpiderChart' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function generateTable2' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function generateSerieDonutChart' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function generateSerieSpider' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function generateTable3' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Graficas function ejeYSpider' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='SendCodeService: GET Servicio SendCode' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Utilidades function procesarDataChart' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Utilidades function generateCategory' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Utilidades function getYears' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Utilidades function getCountries' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Utilidades function removeChip' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='prueba Utilidades function compararPais' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='Testing environment.desa should have correct values' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='IndicadorMultilateralService: Post Service IndicadorMultilateralService' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='ComparativeService: GET Service ComparativeService' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='GrafhicsService: Get  prueba GrafhicsService' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='DataService : GET Service DataService ' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='IndicadorChildToParentService: Get should call if' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='IndicadorChildToParentService: Get should call onChangeIndicadorSub when onChangeIndicador$ is emitted' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='IndicadorChildToParentService: Get should be created IndicadorChildToParentService' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+    </file>
+    <file path='src/app/directory/tab-directory/map-all/map-all.component.spec.ts'>
+        <testCase name='MapAllComponent should create the component' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+    </file>
+    <file path='src/app/directory/tab-directory/tab-directory.component.spec.ts'>
+        <testCase name='TabDirectoryComponent should create the component' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+    </file>
+    <file path='src/app/app.component.spec.ts'>
+        <testCase name='AppComponent should have as title &apos;front-olce&apos;' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='AppComponent should create the app' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='AppComponent should render title' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+    </file>
+    <file path='src/app/directory/tab-directory/map/map.component.spec.ts'>
+        <testCase name='MapComponent should create the component' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+    </file>
+    <file path='src/app/comparative/tab-comparative/services/comparative.service.spec.ts'>
+        <testCase name='ComparativeService should be created' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+    </file>
+    <file path='src/app/comparative/tab-comparative/tab-comparative.component.spec.ts'>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type puertoDestinoId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type modoTransporteId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type destinoZonaId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type puertoOrigenId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type categoriaId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate removeChip validate selectToChips to length equal 0' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate removeChip' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type origenPaisId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type denominacionServicio' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type tipoServicioId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type ciudadOrigen' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type monedaId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type entidadTipoId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate setUniqueOperator' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type opeTipOpeCircunscripcionId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type lineaNavieraId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type modTranspId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type destinoPaisId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type tipoEnvioId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should create the component' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type origenZonaId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type tipoVehiculoId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type termPortAeropId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type tipoComercioId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type tipoCargaId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
+        <testCase name='TabComparativeComponent should validate limpiarSelect type tipoViaProcedId' duration='0'>
+            <skipped message='TestCase skipped'/>
+        </testCase>
     </file>
 </testExecutions>
