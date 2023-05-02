@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AirTransportComponent } from './air-transport.component';
+import { RailwaysComponent } from './railways.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormBuilder } from '@angular/forms';
 
-describe('AirTransportComponent', () => {
-  let component: AirTransportComponent;
-  let fixture: ComponentFixture<AirTransportComponent>;
+describe('RailwaysComponent', () => {
+  let component: RailwaysComponent;
+  let fixture: ComponentFixture<RailwaysComponent>;
   const formBuilderMock: FormBuilder = new FormBuilder();
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AirTransportComponent],
+      declarations: [RailwaysComponent],
       imports: [HttpClientTestingModule, RouterTestingModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       providers: [
@@ -24,7 +24,7 @@ describe('AirTransportComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AirTransportComponent);
+    fixture = TestBed.createComponent(RailwaysComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
