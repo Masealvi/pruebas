@@ -1,0 +1,199 @@
+.left {
+    float: left;
+}
+
+.rigth {
+    float: right;
+    width: 35%;
+    text-align: center;
+}
+
+.rigth-2 {
+    float: right;
+    width: 13%;
+}
+
+.rigth-3 {
+    float: right;
+}
+
+.info {
+    -webkit-column-count: 3;
+    /* Chrome, Safari, Opera */
+    -moz-column-count: 3;
+    /* Firefox */
+    column-count: 3;
+    -webkit-column-gap: 10px;
+    /* Chrome, Safari, Opera */
+    -moz-column-gap: 10px;
+    /* Firefox */
+    column-gap: 10px;
+    -webkit-column-rule-style: solid;
+    /* Chrome, Safari, Opera */
+    -moz-column-rule-style: solid;
+    /* Firefox */
+    column-rule-style: solid;
+    -webkit-column-rule-width: 1px;
+    /* Chrome, Safari, Opera */
+    -moz-column-rule-width: 1px;
+    /* Firefox */
+    column-rule-width: 1px;
+    -webkit-column-rule-color: lightgray;
+    /* Chrome, Safari, Opera */
+    -moz-column-rule-color: lightgray;
+    /* Firefox */
+    column-rule-color: lightgray;
+}
+
+.info-2 {
+    -webkit-column-count: 2;
+    /* Chrome, Safari, Opera */
+    -moz-column-count: 2;
+    /* Firefox */
+    column-count: 2;
+    -webkit-column-gap: 20px;
+    /* Chrome, Safari, Opera */
+    -moz-column-gap: 20px;
+    /* Firefox */
+    column-gap: 20px;
+    -webkit-column-rule-style: solid;
+    /* Chrome, Safari, Opera */
+    -moz-column-rule-style: solid;
+    /* Firefox */
+    column-rule-style: solid;
+    -webkit-column-rule-width: 1px;
+    /* Chrome, Safari, Opera */
+    -moz-column-rule-width: 1px;
+    /* Firefox */
+    column-rule-width: 1px;
+    -webkit-column-rule-color: lightgray;
+    /* Chrome, Safari, Opera */
+    -moz-column-rule-color: lightgray;
+    /* Firefox */
+    column-rule-color: lightgray;
+}
+
+.bolded {
+    font-weight: bold;
+    font-size: 200%;
+    padding-top: 10px;
+}
+
+.lessBold {
+    font-weight: 550;
+}
+
+.type-text-title {
+    color: #111827;
+    font-family: 'Roboto', sans-serif, system-ui;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+@media (max-width: 768px) {
+    .rigth-left {
+        padding-top: 5px;
+        float: left;
+        width: 80%;
+        text-align: center;
+    }
+
+    .rigth2-left {
+        padding-top: 5px;
+        float: left;
+        width: 50%;
+        text-align: center;
+    }
+
+    .bolded {
+        font-weight: bold;
+        font-size: 150%;
+        padding-top: 10px;
+    }
+
+    .type-text-title {
+        color: #111827;
+        font-family: 'Roboto', sans-serif, system-ui;
+        font-size: clamp(1.7279999999999998rem, calc(1.7279999999999998rem + ((2.3203125 - 1.7279999999999998) * ((100vw - 20rem) / (80 - 20)))), 2.3203125rem);
+        line-height: 1.2;
+        font-weight: 900;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .rigth-media {
+        float: right;
+        width: 45%;
+    }
+
+    .bolded2 {
+        font-weight: bold;
+        font-size: 130%;
+        padding-top: 10px;
+    }
+
+    .rigth2-media {
+        float: right;
+        width: 20%;
+    }
+
+    .type-text-title {
+        color: #111827;
+        font-family: 'Roboto', sans-serif, system-ui;
+        font-size: 25px;
+        line-height: 1.2;
+        font-weight: 900;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1200px) {
+    .bolded2 {
+        font-weight: bold;
+        font-size: 150%;
+        padding-top: 10px;
+    }
+
+    .rigth2-media {
+        float: right;
+        width: 20%;
+    }
+
+    .type-text-title {
+        color: #111827;
+        font-family: 'Roboto', sans-serif, system-ui;
+        font-size: 20px;
+        line-height: 1.2;
+        font-weight: 900;
+    }
+}
+
+.nav-tabs {
+    border-bottom-color: #121212;
+    border-bottom-width: initial;
+    padding-bottom: 0;
+}
+
+.nav-tabs .nav-link {
+    color: #0056AC;
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: #121212;
+    background-color: #fff;
+    border-color: #121212 #121212 #fff;
+    border-radius: 0;
+    border-right-color: #121212;
+    border-right-width: medium;
+    border-top-color: #121212;
+    border-top-width: medium;
+    border-left-color: #121212;
+    border-left-width: medium;
+    margin-bottom: -3px;
+}
+
+/* .nav-tabs .nav-link:hover {
+    
+} */

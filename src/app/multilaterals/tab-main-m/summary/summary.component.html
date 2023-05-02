@@ -1,0 +1,121 @@
+<div *ngIf="loadingSummary">
+    <img class="loading" src="./././assets/loading/loading.gif">
+</div>
+<article class="container">
+    <!-- <div [class]="loadingSummary == true ? 'hidden' : ''">
+holaaa
+    </div> -->
+    <section *ngIf="codes == 1">
+        <div class="mt-5">
+            <div class="row form-inline">
+                <div class="col">
+                    <nav>
+                        <div class="nav nav-tabs pull-right" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active type-text" id="tab-mundo" data-bs-toggle="tab"
+                                    data-bs-target="#graphic-tab-mundo" type="button" role="tab"
+                                    aria-controls="graphic-tab-mundo" aria-selected="true">Mundo</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link type-text" id="tab-latam" data-bs-toggle="tab"
+                                    data-bs-target="#graphic-tab-latam" type="button" role="tab"
+                                    aria-controls="graphic-tab-latam" aria-selected="false">LATAM</button>
+                            </li>
+                        </div>
+                    </nav>
+                    <h3 class="title-tab">Mejores 5 países</h3>
+                </div>
+            </div>
+            <div class="tab-content border-control-tab" id="myTabContent">
+                <div class="tab-pane  show active p-3" id="graphic-tab-mundo" role="tabpanel"
+                    aria-labelledby="tab-mundo" tabindex="0">
+                    <div [innerHTML]="htmlGraficaBarra"></div>
+                </div>
+                <div class="tab-pane  p-3" id="graphic-tab-latam" role="tabpanel" aria-labelledby="tab-latam"
+                    tabindex="0">
+                    <div class="alert alert-secondary mt-3 text-center">
+                        <mat-icon>info</mat-icon>
+                        <p class="type-text" style="text-align: center;">En mantenimiento!!!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <div class="row form-inline">
+                <div class="col">
+                    <h3 class="title-tab">Indicador LPI</h3>
+                </div>
+            </div>
+            <div class="border-control-tab">
+                <div class="border-control-grafica">
+                    <section style="float: right;">
+                        <div class="form-inline" [formGroup]="formGraficar!" *ngIf="formGraficar">
+                            <label class="type-text" style="padding-right: 3px;">Último año comparado con</label>
+                            <select (change)="graficar()" class="form-control" formControlName="cboAnio">
+                                <option *ngFor="let item of years" [value]="item">{{item}}</option>
+                            </select>
+                        </div>
+                    </section>
+                    <section>
+                        <div [chart]="spiderChart" style="width: 100%;"></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <div class="row form-inline">
+                <div class="col">
+                    <h3 class="title-tab">Visión Global</h3>
+                </div>
+            </div>
+            <div class="border-control-tab">
+                <div class="border-control-grafica">
+                    <section style="float: right;">
+                        <div class="form-inline" [formGroup]="formGraficar!" *ngIf="formGraficar">
+                            <label class="type-text" style="padding-right: 3px;">Año</label>
+                            <select (change)="graficar()" class="form-control" formControlName="cboAnioGlobal">
+                                <option *ngFor="let item of yearsGlobal" [value]="item">{{item}}</option>
+                            </select>
+                        </div>
+                    </section>
+                    <section>
+                        <div id="container1" style="width: 100%;"></div>
+                    </section>
+                </div>
+            </div>
+        </div><br>
+    </section>
+    <section *ngIf="codes == 2">
+        <div class="row">
+            <div [chart]="barChartSummary2" style="width: 100%; height: 200;"></div>
+        </div>
+        <div class="row" style="margin-top: -15%;">
+            <div class="col-md-6 col-lg-6" *ngFor="let i of [0,1,2,3,4,5,6,7,8,9]">
+                <div class="mb-3">
+                    <div class="border-control-tab2">
+                        <div id="chart-gauge{{i}}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="codes == 3">
+        <div class="row">
+            <div *ngFor="let item of array_donut" class="col-lg-6 ">
+                <div class="mb-3">
+                    <div class="row form-inline">
+                        <div class="col">
+                            <h3 class="title-tab" [innerHTML]="item[2]"></h3>
+                        </div>
+                    </div>
+                    <div class="border-control-tab">
+                        <div [chart]="item[0]"></div>
+                        <div class="table-responsive">
+                            <div [innerHTML]="item[1]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+    </section>
+</article>

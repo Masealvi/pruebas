@@ -1,0 +1,145 @@
+<br>
+<div *ngIf="loadingAir">
+    <img class="loading" src="./././assets/loading/loading.gif">
+</div>
+<article class="container" *ngIf="!loadingAir">
+    <form [formGroup]="formGraficarAir!" *ngIf="formGraficarAir">
+        <section>
+            <div class="row row-cols-sm-2 row-cols-md-2 row-cols-lg-4">
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label>Año</label>
+                        <mat-form-field>
+                            <mat-label>Seleccionar ...</mat-label>
+                            <mat-select multiple [formControl]="aniosAir">
+                                <mat-select-trigger>
+                                    {{aniosAir.value ? aniosAir.value[0] : ''}}
+                                    <span *ngIf="aniosAir.value?.length > 1" class="example-additional-selection">
+                                        (+{{aniosAir.value.length - 1}} {{aniosAir.value?.length === 2 ? 'otro' :
+                                        'otros'}})
+                                    </span>
+                                </mat-select-trigger>
+                                <mat-option (click)="getFiltrosAplicadosAir(yearAir, yearAir, 'A')"
+                                    *ngFor="let yearAir of yearsAir" [value]="yearAir">{{yearAir}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label id="ComparadoAir">Perú comparado con:</label>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button class="type-text14" value="1" checked>País</mat-radio-button>
+                            <mat-radio-button class="type-text14" value="2">Grupo de países</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label id="paisAir">País</label>
+                        <mat-form-field>
+                            <mat-label id="seleccioneAir">Seleccione ...</mat-label>
+                            <mat-select multiple [formControl]="paisesAir">
+                                <mat-select-trigger>
+                                    {{paisesAir.value ? paisesAir.value[0] : ''}}
+                                    <span *ngIf="paisesAir.value?.length > 1" class="example-additional-selection">
+                                        (+{{paisesAir.value.length - 1}} {{paisesAir.value?.length === 2 ? 'otro' :
+                                        'otros'}})
+                                    </span>
+                                </mat-select-trigger>
+                                <mat-option (click)="getFiltrosAplicadosAir(countryAir.code, countryAir.name, 'P')"
+                                    *ngFor="let countryAir of countriesAir"
+                                    [value]="countryAir.name">{{countryAir.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label>Indicador</label>
+                        <mat-form-field>
+                            <mat-select (selectionChange)="changeSelectorAir()" name="medida"
+                                formControlName="cboMedida">
+                                <mat-option *ngFor="let itemAir of medidaFiltrado" [value]="itemAir">
+                                    {{itemAir}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <mat-form-field class="example-chip-list contenedor-control-Chip">
+                <label>Filtros aplicados:</label>
+                <mat-chip-list #chipList>
+                    <mat-chip *ngFor="let selectAir of selectToChipsAir" [selectable]="selectableAir"
+                        [removable]="removableAir" (removed)="removeChip(selectAir)">
+                        {{selectAir.valor}}
+                        <button matChipRemove *ngIf="removableAir">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-form-field>
+            <div hidden class="row mb-3" style="margin-top: 2.5%;">
+                <div class="col col-lg-2">
+                    <button [disabled]="inactiveButtonAir" (click)="graficarAir()"
+                        class="btn-graficar btn-graficar-large">Graficar</button>
+                </div>
+            </div>
+        </section>
+        <div class="alert alert-secondary mt-3 text-center" *ngIf="alertMessageAir">
+            <mat-icon>info</mat-icon>
+            <p class="type-text" style="text-align: center;">Seleccione año, país e indicador para visualizar la
+                gráfica.</p>
+        </div>
+        <section *ngIf="!alertMessageAir">
+            <div class="mt-5">
+                <div class="row form-inline">
+                    <div class="col">
+                        <nav>
+                            <div class="nav nav-tabs pull-right" id="myTabAir" role="tablist">
+                                <li id="barraAir" class="nav-item" role="presentation">
+                                    <button class="nav-link active type-text" id="tab-bar" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-bar" type="button" role="tab"
+                                        aria-controls="graphic-tab-bar" aria-selected="true">Barra</button>
+                                </li>
+                                <li id="lineaAir" class="nav-item" role="presentation">
+                                    <button class="nav-link type-text" id="tab-line-air" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-line-air" type="button" role="tab"
+                                        aria-controls="graphic-tab-line-air" aria-selected="false">Línea</button>
+                                </li>
+                                <li id="tablaAir" class="nav-item" role="presentation">
+                                    <button class="nav-link type-text" id="tab-table" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-table" type="button" role="tab"
+                                        aria-controls="graphic-tab-table" aria-selected="false">Tabla</button>
+                                </li>
+                            </div>
+                        </nav>
+                        <h3 class="title-tab">{{nameGraphicAir}}</h3>
+                    </div>
+                </div>
+                <div class="tab-content border-control-tab" id="myTabContent">
+                    <div class="tab-pane  show active p-3" id="graphic-tab-bar" role="tabpanel"
+                        aria-labelledby="tab-bar" tabindex="0">
+                        <br>
+                        <div class="row">
+                            <div [chart]="barChartAir" style="width: 98%;"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-3" id="graphic-tab-line-air" role="tabpanel" aria-labelledby="tab-line-air"
+                        tabindex="0">
+                        <br>
+                        <div class="row">
+                            <div [chart]="lineChartAir" style="width: 98%;"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-3" id="graphic-tab-table" role="tabpanel" aria-labelledby="tab-table"
+                        tabindex="0">
+                        <div class="table-responsive" [innerHTML]="tableHtmlAir"></div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </section>
+    </form>
+</article>

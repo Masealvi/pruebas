@@ -1,0 +1,132 @@
+<br>
+<div *ngIf="loadingPatents">
+    <img class="loading" src="./././assets/loading/loading.gif">
+</div>
+<article class="container" *ngIf="!loadingPatents">
+    <form>
+        <section>
+            <div class="row row-cols-sm-2 row-cols-md-2 row-cols-lg-3">
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label>Año</label>
+                        <mat-form-field>
+                            <mat-label>Seleccionar ...</mat-label>
+                            <mat-select multiple [formControl]="aniosPatents">
+                                <mat-select-trigger>
+                                    {{aniosPatents.value ? aniosPatents.value[0] : ''}}
+                                    <span *ngIf="aniosPatents.value?.length > 1" class="example-additional-selection">
+                                        (+{{aniosPatents.value.length - 1}} {{aniosPatents.value?.length === 2 ? 'otro'
+                                        : 'otros'}})
+                                    </span>
+                                </mat-select-trigger>
+                                <mat-option (click)="getFiltrosAplicados(yearPatents, yearPatents, 'A')"
+                                    *ngFor="let yearPatents of yearsPatents"
+                                    [value]="yearPatents">{{yearPatents}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label id="comparadoPatents">Perú comparado con:</label>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button class="type-text14" value="1" checked>País</mat-radio-button>
+                            <mat-radio-button class="type-text14" value="2">Grupo de países</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label id="paisPatents">País</label>
+                        <mat-form-field>
+                            <mat-label id="seleccionePatents">Seleccione ...</mat-label>
+                            <mat-select multiple [formControl]="paisesPatents">
+                                <mat-select-trigger>
+                                    {{paisesPatents.value ? paisesPatents.value[0] : ''}}
+                                    <span *ngIf="paisesPatents.value?.length > 1" class="example-additional-selection">
+                                        (+{{paisesPatents.value.length - 1}} {{paisesPatents.value?.length === 2 ?
+                                        'otro' : 'otros'}})
+                                    </span>
+                                </mat-select-trigger>
+                                <mat-option (click)="getFiltrosAplicados(countryPatents.code, countryPatents.name, 'P')"
+                                    *ngFor="let countryPatents of countriesPatents"
+                                    [value]="countryPatents.name">{{countryPatents.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <mat-form-field class="example-chip-list contenedor-control-Chip">
+                <label>Filtros aplicados:</label>
+                <mat-chip-list #chipList>
+                    <mat-chip *ngFor="let selectPatents of selectToChipsPatents" [selectable]="selectablePatents"
+                        [removable]="removablePatents" (removed)="removeChip(selectPatents)">
+                        {{selectPatents.valor}}
+                        <button matChipRemove *ngIf="removablePatents">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-form-field>
+            <div hidden class="row mb-3" style="margin-top: 2.5%;">
+                <div class="col col-lg-2">
+                    <button [disabled]="inactiveButtonPatents" (click)="graficarPatents()"
+                        class="btn-graficar btn-graficar-large">Graficar</button>
+                </div>
+            </div>
+        </section>
+        <div class="alert alert-secondary mt-3 text-center" *ngIf="alertMessagePatents">
+            <mat-icon>info</mat-icon>
+            <p class="type-text" style="text-align: center;">Seleccione año y país para visualizar la gráfica.</p>
+        </div>
+        <section *ngIf="!alertMessagePatents">
+            <div class="mt-5">
+                <div class="row form-inline">
+                    <div class="col">
+                        <nav>
+                            <div class="nav nav-tabs pull-right" id="myTabPatents" role="tablist">
+                                <li id="columnaPatente" class="nav-item" role="presentation">
+                                    <button class="nav-link active type-text" id="tab-col-pat" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-col-pat" type="button" role="tab"
+                                        aria-controls="graphic-tab-col-pat" aria-selected="true">Columna</button>
+                                </li>
+                                <li id="lineaPatente" class="nav-item" role="presentation">
+                                    <button class="nav-link type-text" id="tab-line" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-line" type="button" role="tab"
+                                        aria-controls="graphic-tab-line" aria-selected="false">Línea</button>
+                                </li>
+                                <li id="tablaPatente" class="nav-item" role="presentation">
+                                    <button class="nav-link type-text" id="tab-table" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-table" type="button" role="tab"
+                                        aria-controls="graphic-tab-table" aria-selected="false">Tabla</button>
+                                </li>
+                            </div>
+                        </nav>
+                        <h3 class="title-tab">Patentes</h3>
+                    </div>
+                </div>
+                <div class="tab-content border-control-tab" id="myTabContent">
+                    <div class="tab-pane  show active p-3" id="graphic-tab-col-pat" role="tabpanel"
+                        aria-labelledby="tab-col-pat" tabindex="0">
+                        <br>
+                        <div class="row">
+                            <div [chart]="columnChartPatents" style="width: 98%;"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-3" id="graphic-tab-line" role="tabpanel" aria-labelledby="tab-line"
+                        tabindex="0">
+                        <br>
+                        <div class="row">
+                            <div [chart]="lineChartPatents" style="width: 98%;"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-3" id="graphic-tab-table" role="tabpanel" aria-labelledby="tab-table"
+                        tabindex="0">
+                        <div class="table-responsive" [innerHTML]="tableHtmlPatents"></div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </section>
+    </form>
+</article>

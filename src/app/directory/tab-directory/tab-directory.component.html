@@ -1,0 +1,501 @@
+<br>
+<div class="container">
+ 
+    <div class="section-izquierda">
+
+        <div class="contenedor-control">
+            <div class="mat-form-field" style="display: flex; align-items: center;">
+                <mat-icon>search</mat-icon>
+                <input placeholder="Buscar" style="width: 100%;" type="text" [(ngModel)]="valorActual"
+                (keyup.enter)="buscarCoincidencias()">
+            </div>
+
+
+        </div>
+        <br>
+        <div class="contenedor-control">
+            <label for=""><strong>Región</strong> </label>
+            <mat-form-field>
+                <mat-label>Todas</mat-label>
+                <mat-select multiple [formControl]="region" (selectionChange)="onSelect($event.value)">
+
+                    <mat-select-trigger>
+                        {{region.value ? region.value[0] : ''}}
+                        <span *ngIf="region.value?.length > 1" class="example-additional-selection">
+                            (+{{region.value.length - 1}} {{region.value?.length === 2 ? 'otro' : 'otros'}})
+                        </span>
+                    </mat-select-trigger>
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'circunscripcionId')"
+                        *ngFor="let item of circunscripcion_aduanera" [value]="item.nombre">{{item.nombre}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <br>
+        <div class="contenedor-control">
+
+            <label class="type-text"><strong>Filtrar por :</strong></label>
+            <mat-radio-group [(ngModel)]="selectedOption">
+               
+                <mat-radio-button class="radiobutton type-text" (click)="todos()" value="Todos">Todos</mat-radio-button>
+                <mat-radio-button class="radiobutton type-text" (click)="getFiltrosRadio(2,'Infraestructura','r')"
+                    value="Infraestructura">Infraestructura</mat-radio-button>
+                <mat-radio-button class="radiobutton type-text"
+                    (click)="getFiltrosRadio(3,'Proveedores de Servicios','r')"
+                    value="Proveedores de Servicios">Proveedores de Servicios</mat-radio-button>
+
+            </mat-radio-group>
+
+        </div>
+        <br>
+        <div class="contenedor-control">
+            <label for=""><strong>Tipo</strong></label>
+            <mat-form-field>
+                <mat-label>Seleccione</mat-label>
+                <mat-select [disabled]="!proveedorSeleccionado" multiple [formControl]="operador"
+                    (selectionChange)="onSelect($event.value)">
+                    <mat-select-trigger>
+                        {{operador.value ? operador.value[0] : ''}}
+                        <span *ngIf="operador.value?.length > 1" class="example-additional-selection">
+                            (+{{operador.value.length - 1}} {{operador.value?.length === 2 ? 'otro' : 'otros'}})
+                        </span>
+                    </mat-select-trigger>
+                    <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'tipo_operador')"
+                        *ngFor="let item of tiposOperadores" [value]="item.nombre">{{item.nombre}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <br>
+        <div class="contenedor-control">
+            <mat-label class="type-text margen-label"><strong>Empresas por la letra </strong></mat-label>
+            <br>
+            <br>
+            <div class="alphabet-box" style="width: 100%;">
+                <button class="type-text margen-label" (click)="buscarPorLetra(letra)"
+                    *ngFor="let letra of letters"><strong>{{letra}}</strong> </button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+
+            <div class="col-4">
+              
+                <button mat-raised-button class="btn-limpiar type-text" (click)="limpiar()"><strong>Limpiar</strong>
+                </button>
+            </div>
+            <div class="col-8">
+
+                <button mat-raised-button class="btn-buscar type-text"
+                    (click)="buscar(filtroOne)"><strong>Filtrar</strong> </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- Sección derecha -->
+
+    <div class="section-derecha">
+        <br>
+        <h1 class="type-text-titledir">Directorio Logístico</h1>
+
+        <br>
+        <span class="type-text">Te presentamos toda la documentación necesaria actualizada sobre la normativa vigente en
+            Comercio
+            Exterior en nuestro País
+        </span>
+
+
+        <hr>
+        <div class="row col-12">
+            <div style="margin-right: 10px;">
+                <h3><strong>{{selectedOption}}</strong></h3>
+            </div>
+            <div *ngIf="contadorBuscador==0 && coincidencias.length>0 && contadorLetra==0" class="ml-auto type-text">
+
+                <h3>Mostrar <strong>{{desde}}</strong>
+                    a <strong>{{totalItems > 10 ? hasta : totalItems}}</strong>
+                    de <strong>{{totalItems}}</strong>
+                    resultados</h3>
+            </div>
+            <div *ngIf="contadorBuscador>0" class="ml-auto type-text">
+
+                <h3>Mostrar <strong>{{desde}}</strong>
+                    a <strong>{{totalItems > 10 ? hasta : contadorBuscador}}</strong>
+                    de <strong>{{contadorBuscador}}</strong>
+                    resultados</h3>
+            </div>
+            <div *ngIf="contadorLetra>0" class="ml-auto type-text">
+
+                <h3>Mostrar <strong>{{desde}}</strong>
+                    a <strong>{{totalItems > 10 ? hasta : contadorLetra}}</strong>
+                    de <strong>{{contadorLetra}}</strong>
+                    resultados</h3>
+            </div>
+
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col col-12 ">
+                <mat-label class="type-text"><strong>{{contadorSelectChips}} Filtros aplicados:</strong> </mat-label>
+                <mat-form-field class="example-chip-list ">
+
+                    <mat-chip-list #chipList>
+                        <mat-chip class="contenedor-control-Chip" *ngFor="let item of selectToChips"
+                            [selectable]="selectable" [removable]="removable" (removed)="removeChip(item)">
+                            {{item.valor}}
+                            <button matChipRemove *ngIf="removable">
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        </mat-chip>
+                    </mat-chip-list>
+                </mat-form-field>
+
+            </div>
+
+
+        </div>
+
+        <hr>
+        <div class="d-flex">
+            <div class="col col-lg-12 left">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active type-text" id="tab-bar" (click)="showMapa = false"
+                            data-bs-toggle="tab" data-bs-target="#empresa-organizacion" type="button" role="tab"
+                            aria-controls="empresa-organizacion" aria-selected="true">Empresas /
+                            organizaciones</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link type-text" id="tab-column" (click)="showMapa = true" data-bs-toggle="tab"
+                            data-bs-target="#mapa" type="button" role="tab" aria-controls="mapa"
+                            aria-selected="false">Mapa</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="alert alert-secondary mt-2 text-center" *ngIf="mostrarAviso">
+
+
+            <p class="botones-align-center type-text ">
+                <mat-icon>info</mat-icon>No hay resultados en su búsqueda, por favor limpie los campos
+                y seleccione!!
+            </p>
+        </div>
+        <br>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane  show active" id="empresa-organizacion" role="tabpanel" aria-labelledby="tab-bar"
+                tabindex="0">
+                <div class="row col-12 ml-auto"
+                    style="display: flex; justify-content: space-between; align-items: center">
+                    <!--
+                    <h3 style="margin-left: 470px; margin-top: 20px;">Ordenar:</h3>
+                   
+                    <select class="form-select" (click)="mostrarAviso = false" (change)="ordenamiento($event)">
+
+                        <option value="A-z" selected>Alfabeticamente(A-z)</option>
+                        <option value="Z-a">Alfabeticamente(Z-a)</option>
+                        <option value="A-z">Más Visitados</option>
+                    </select>
+-->
+                    <mat-label style="margin-left: 420px;" class="type-text margen-label">Ordenar </mat-label>
+                    <div class="contenedor-control">
+
+                        <mat-form-field>
+
+                            <mat-select [(ngModel)]="selectedValue" (selectionChange)="ordenamiento(selectedValue)">
+                                <mat-option class="type-text" value="A-z">Alfabeticamente(A-z)</mat-option>
+                                <mat-option class="type-text" value="Z-a">Alfabeticamente(Z-a)</mat-option>
+                                <mat-option class="type-text" value="A-z">Más Visitados</mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </div>
+
+                </div>
+                <br>
+                <div *ngFor="let item of coincidencias | slice:desde:hasta" class="empresas">
+
+                    <div class="directori">
+                        <h3 class="text-black font-bold type-text">{{item.razonSocial}}</h3>
+                        <span class="type-text type-text">{{item.numeroDocumento}}</span>
+
+                    </div>
+                    <hr>
+                    <div class="row col-12">
+
+                        <div class="col-6">
+                            <span class="type-text"><strong>Telefono</strong> </span>
+                            <span class="colorAzul type-text">{{item.contacto.telefono}}</span>
+                        </div>
+
+                        <div class="col-6">
+                            <span class="type-text"><strong>Email</strong> </span>
+                            <span class="colorAzul type-text">{{item.contacto.correo}}</span>
+                        </div>
+
+
+                    </div>
+                    <br>
+                    <div class="row col-12">
+
+                        <div class="col-6">
+                            <span class="type-text"><strong> Web</strong></span>
+                            <span class="colorAzul type-text">{{item.contacto.sitioWeb}}</span>
+                        </div>
+
+                        <div class="col-6">
+                            <span class="type-text"><strong> Tags</strong></span>
+                            <span class="colorAzul type-text">tag1, tag2, tag3</span>
+                        </div>
+
+
+                    </div>
+                    <br>
+
+
+
+
+                    <!--
+                    <div style="display: flex; align-items: center;justify-content: flex-start;">
+                        <hr>
+                        <a style="color: blue;display: block; ">
+                            <h4 class="type-text" style="margin-top: 10px;"><strong>Más información</strong> </h4>
+                        </a>
+
+
+                        <button mat-raised-button class="btn-informacion type-text botones-align-center "
+                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            (click)="getMasInformacion(item.id)"><strong><mat-icon>arrow_forward</mat-icon></strong>
+                        </button>
+                    </div>
+                    -->
+                    <div style="display: flex; align-items: center;justify-content: flex-start;">
+                        <hr>
+                        <!--
+                        <a style="color:#0056AC; margin-right: 10px; ;display: block; ">
+                            <h4 class="type-text olce-link--small" style="margin-top: 10px;"><strong>Más
+                                    Información</strong> </h4>
+                        </a>
+-->
+                        <button style="margin-right: 10px; color:#0056AC; ; " class="btnMasInformacion type-text"
+                            (click)="getMasInformacion(item.id)" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            mat-raised-button>
+                            <strong>Más Información</strong>
+                        </button>
+
+
+                        <button style="margin-right: 10px;" class="btn-informacion type-text botones-align-center"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal" mat-raised-button
+                            (click)="getMasInformacion(item.id)">
+                            <mat-icon>arrow_forward</mat-icon>
+                        </button>
+
+                    </div>
+
+                </div>
+                <br>
+                <mat-paginator [length]="datellaEntidad.length" [pageSize]="pageSize" (page)="cambiarPagina($event)"
+                    aria-label="Select page">
+                </mat-paginator>
+            </div>
+
+        </div>
+
+
+        <br>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+            <div class="modal-dialog modal-xl ">
+                <div class="modal-content modal-dialog-centered modal-dialog-scrollable modal-lg ">
+                    <div *ngFor="let item of detalleServicioArray">
+                        <div class="modal-header">
+
+                            <div class="row col-12">
+                                <div class="col-3">
+                                    <img src="./assets/images/tarjeta.jpg" alt="Foto de perfil">
+                                </div>
+
+                                <div class="col-9">
+                                    <h1 class="type-text margen-label">RUC {{item.numeroDocumento}} </h1>
+                                    <h1 class="type-text-titlRazon">{{item.razonSocial}}</h1>
+                                </div>
+                                <hr>
+
+                            </div>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row col-12">
+                                <div *ngFor="let item2 of item.autorizaciones">
+                                    <h5><span class="tag type-text">{{item2}}</span></h5>
+
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="col-12">
+                                <h2 class="type-text margen-label">Web</h2>
+                                <h3 class="colorAzul type-text">{{item.contacto.sitioWeb}}</h3>
+
+                            </div>
+                            <hr>
+                            <div class="section-izquierda" style=" background-color:#ffffff">
+                                <div class="col-6 ">
+                                    <h2 class="type-text margen-label">Departamento</h2>
+                                    <h3 class="type-text">{{item.departamento}}</h3>
+                                </div>
+                                <hr>
+                                <div class=" col-12 ">
+                                    <h2 class="type-text margen-label">Provincia</h2>
+                                    <h3 class="type-text">{{item.provincia}}</h3>
+                                </div>
+                                <hr>
+                                <div class=" col-12 ">
+                                    <h2 class="type-text margen-label">Distrito</h2>
+                                    <h3 class="type-text">{{item.distrito}}</h3>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="section-derecha " style=" background-color: #f5f5f5;">
+                                <div class="col-6 ">
+                                    <h2 class="type-text margen-label">Teléfono</h2>
+                                    <h3 class="colorAzul type-text">{{item.contacto.celular}}</h3>
+                                </div>
+                                <hr>
+                                <div class="col-6 ">
+                                    <h2 class="type-text margen-label">Email</h2>
+                                    <h3 class="colorAzul type-text">{{item.contacto.correo}}</h3>
+                                </div>
+                                <hr>
+                                <div class="col-6 ">
+                                    <h2 class="type-text margen-label">Tags</h2>
+                                    <h3 class="colorAzul type-text">Tags 1, Tags 2, Tags 3</h3>
+                                </div>
+                            </div>
+                            <!--
+                            <div class="col-12">
+                                <h2 class="type-text margen-label">Web</h2>
+                                <h3 class="colorAzul type-text">{{item.contacto.sitioWeb}}</h3>
+
+                            </div>
+                            <hr>
+                            <div class="row col-12">
+                                <div class=" col-6">
+                                    <h2 class="type-text margen-label">Departamento</h2>
+                                    <h3 class="type-text">{{item.departamento}}</h3>
+                                </div>
+
+                                <div class="col-6 ">
+                                    <h2 class="type-text margen-label">Teléfono</h2>
+                                    <h3 class="colorAzul type-text">{{item.contacto.celular}}</h3>
+                                </div>
+
+
+                            </div>
+                            <hr>
+                            <div class="row col-12 ">
+                                <div class=" col-6">
+                                    <h2 class="type-text margen-label">Provincia</h2>
+                                    <h3 class="type-text">{{item.provincia}}</h3>
+                                </div>
+
+                                <div class="col-6 ">
+                                    <h2 class="type-text margen-label">Email</h2>
+                                    <h3 class="colorAzul type-text">{{item.contacto.correo}}</h3>
+                                </div>
+
+
+                            </div>
+                            <hr>
+                            <div class="row col-12">
+                                <div class=" col-6">
+                                    <h2 class="type-text margen-label">Distrito</h2>
+                                    <h3 class="type-text">{{item.distrito}}</h3>
+                                </div>
+
+                                <div class="col-6 ">
+                                    <h2 class="type-text margen-label">Tags</h2>
+                                    <h3 class="colorAzul type-text">Tags 1, Tags 2, Tags 3</h3>
+                                </div>
+
+
+                            </div>
+                            <hr>
+                            <div class="col-6">
+                                <h2 class="type-text margen-label">Domicilio Fiscal</h2>
+                                <h3 class="colorAzul type-text">{{item.domicilioFiscal}}</h3>
+
+                            </div>
+
+                            <div class="col-12">
+
+                                <ng-container *ngIf="domicilioFiscal">
+                                    <app-map [domicilioFiscal]="domicilioFiscal"></app-map>
+                                </ng-container>
+
+                            </div>
+-->
+                        </div>
+                        <hr>
+
+                        <div class="col-12">
+                            <h2 class="type-text margen-label">Domicilio Fiscal</h2>
+                            <h3 class="colorAzul type-text">{{item.domicilioFiscal}}</h3>
+
+                        </div>
+                        <div class="col-12">
+
+                            <ng-container *ngIf="domicilioFiscal">
+                                <app-map [domicilioFiscal]="domicilioFiscal"></app-map>
+                            </ng-container>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="d-flex">
+                                <div class="ml-auto">
+                                    <button (click)="limpiarModal()" type="button" data-bs-dismiss="modal"
+                                        mat-raised-button class="btn-limpiar type-text"
+                                        (click)="limpiar()"><strong>Cerrar</strong>
+                                    </button>
+                                </div>
+                            </div>
+
+
+                            <div class="d-flex">
+                                <div class="ml-auto">
+                                    <button mat-raised-button type="button" class="btn-buscar type-text"><strong>Ver
+                                            Mislo</strong> </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+        <div *ngIf="showMapa" id="myTabContent">
+            <div id="mapa">
+                <ng-container *ngIf="arrayIds.length > 0">
+                    <app-map-all [detalleMapaId]="arrayIds"></app-map-all>
+
+                </ng-container>
+            </div>
+        </div>
+
+    </div>
+
+</div>

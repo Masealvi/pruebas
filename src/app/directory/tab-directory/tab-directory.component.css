@@ -1,0 +1,340 @@
+.radiobutton {
+  margin-left: 1px;
+}
+
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.alphabet-box {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  width: 200px;
+  /* ajuste según sea necesario */
+  height: 100px;
+  /* ajuste según sea necesario */
+}
+
+.alphabet-box button {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+}
+
+.directori {
+  border-left: 5px solid red;
+  padding: 10px;
+}
+
+.empresas {
+
+  border-right: 2px solid rgb(196, 191, 191);
+  border-bottom: 2px solid rgb(196, 191, 191);
+
+  padding: 10px;
+}
+
+.colorAzul {
+  color: blue;
+  margin-left: 10px;
+}
+
+#map {
+  height: 600px;
+}
+
+.modalContainer {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+
+.modalContainer .modal-content {
+  background-color: black;
+  margin: auto;
+  padding: 25px;
+  border: 1px solid rgb(69, 30, 210);
+  width: 60%;
+}
+
+.modalContainer .close {
+  color: coral;
+  float: right;
+  font-size: 26px;
+  font-weight: bold;
+
+}
+
+.modalContainer .close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  background-color: #c4e1f5;
+  color: #333;
+  border-radius: 0.2em;
+  margin-right: 0.5em;
+  color: blue;
+}
+
+
+.section {
+  width: 50%;
+  float: left;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+
+
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+.card {
+
+  border-radius: .25rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, .075);
+  padding: 1.25rem;
+  margin-left: 20px;
+  flex-grow: 1;
+}
+
+.section-izquierda {
+
+  width: 30%;
+  float: left;
+
+  box-sizing: border-box;
+  margin-right: 10px;
+  /* Agregamos un margen derecho de 10px */
+}
+
+.section-derecha {
+
+  width: 65%;
+  float: left;
+
+  box-sizing: border-box;
+  margin-left: 10px;
+  /* Agregamos un margen izquierdo de 10px */
+}
+
+.section-izquierda>div {
+
+  padding-bottom: 5px;
+}
+
+.section-izquierda,
+.card {
+  flex-basis: 100%;
+}
+
+.section-derecha,
+.card {
+  flex-basis: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+
+  .section-izquierda,
+  .card {
+    flex-basis: 31%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+  .section-derecha,
+  .card {
+    flex-basis: 66%;
+  }
+}
+
+.btn-largo {
+  width: 120px;
+  /* ajusta el ancho del botón a tu gusto */
+}
+
+.paginator {
+  font-size: 20px;
+}
+
+.modal-xl {
+  width: 600px !important;
+}
+
+
+.btn-border-black {
+  border: 1px solid black;
+}
+
+.type-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+.type-text-titledir {
+  color: #111827;
+  font-family: 'Roboto', sans-serif, system-ui;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 1.2px;
+
+}
+
+.type-text-titlRazon {
+  color: #111827;
+  font-family: 'Roboto', sans-serif, system-ui;
+  font-weight: bold;
+  font-size: clamp(1.2rem, calc(1.2rem + ((1.4849999999999999 - 1.2) * ((100vw - 20rem) / (80 - 20)))), 1.4849999999999999rem);
+  line-height: 1.3;
+
+}
+.modal-header {
+  background-color: #f5f5f5;
+}
+
+.fondo-text{
+  background-color: #f5f5f5;
+  
+  
+}
+.botones-align-center {
+  display: flex;
+  align-items: center;
+}
+input {
+  border: none;
+  outline: none;
+  background-color: white;
+}
+::ng-deep .mat-form-field-infix {
+  border-top: 0;
+}
+
+::ng-deep .mat-form-field-underline {
+  height: 0 !important;
+}
+
+::ng-deep .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  color: white;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding: 0;
+}
+
+.mat-standard-chip {
+  border-radius: 0;
+}
+.mat-form-field {
+  width: 100%;
+}
+
+
+.btn-buscar {
+  background-color: #121212;
+  width: 100%;
+  padding: 6px;
+  color: #fff;
+}
+.btn-buscar:hover {
+  background: #4C515A; /* Crea un degradado de azul oscuro a azul claro */
+}
+.btn-limpiar{
+  background-color: #f8f5f5;
+  width: 100%;
+  padding: 6px;
+  color: #121212;
+}
+.btn-informacion{
+  background-color: #121212;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  
+}
+.btn-informacion:hover {
+  background: #4C515A; /* Crea un degradado de azul oscuro a azul claro */
+}
+
+/*Esto es el nombre de razon social*/
+.olce-flow-prose h3, .custom-block h3 {
+  font-size: clamp(1.2rem, calc(1.2rem + ((1.4849999999999999 - 1.2) * ((100vw - 20rem) / (80 - 20)))), 1.4849999999999999rem);
+  line-height: 1.3;
+  color: #000000;
+}
+.font-bold {
+  font-weight: 700;
+}
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+/*Navegación principal*/
+.nav-tabs {
+  border-bottom-color: #121212;
+  border-bottom-width: initial;
+  padding-bottom: 0;
+}
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: #121212;
+    background-color: #fff;
+    border-color: #121212 #121212 #fff;
+    border-radius: 0;
+    border-right-color: #121212;
+    border-right-width: medium;
+    border-top-color: #121212;
+    border-top-width: medium;
+    border-left-color: #121212;
+    border-left-width: medium;
+    margin-bottom: -3px;
+}
+.nav-tabs .nav-link {
+  color: #0056AC;
+  font-weight: 500;
+}
+.margen-label {
+  margin-right: 10px;
+  color: #726D6D; /* ajusta la cantidad de espacio que necesites */
+}
+.olce-link--small, #crumbs a, .metapopular a, .jet-listing-dynamic-terms__link, .jet-listing-dynamic-link__label, .content-topvalorado .widget-valorados a, .content-topleidos .widget-populars a, .content-topleidos .widget-topdownloads a, .content-topleidos .popular-posts a, .content-topleidos .widget-valorados a, .content-interesa .widget-populars a, .content-interesa .widget-topdownloads a, .content-interesa .popular-posts a, .content-interesa .widget-valorados a, .content-interesa .widget_recent_entries a, .tags-block .wp-block-tag-cloud>a, .tags-block .jet-radio-list-wrapper .jet-radio-list__button {
+  font-size: clamp(0.8333333333333334rem, calc(0.8333333333333334rem + ((0.9504 - 0.8333333333333334) * ((100vw - 20rem) / (80 - 20)))), 0.9504rem) !important;
+  line-height: 1.3 !important;
+}
+.alphabet-box button {
+  background-color: transparent;
+  border: none;
+}
+.espacio{
+  border-bottom: 1px solid #ccc; /* agrega una línea de división en la parte inferior de cada div */
+  /* agrega un poco de espacio entre cada div y la línea de división */
+}
+.btnMasInformacion {
+  border: none;
+  background-color: transparent;
+  width: 135px;
+
+}

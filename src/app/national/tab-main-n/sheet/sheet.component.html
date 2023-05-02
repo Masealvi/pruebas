@@ -1,0 +1,41 @@
+<br>
+    <div class="row">
+        <div class="col-lg-8">
+            <h5 class="type-text gray-text">Definición del indicador</h5>
+            <p class="type-text">{{definicionIndicador}}</p>
+            <hr>
+            <h5 class="type-text gray-text">Fórmula de cálculo</h5>
+            <p class="type-text">{{formulaCalculo}}</p>
+            <hr>
+            <h5 class="type-text gray-text">Descripción de la fórmula</h5>
+            <p class="type-text">{{descripcionFormula}}</p>
+            <hr>
+            <h5 class="type-text gray-text">Unidad de medición del indicador / Dimensiones</h5>
+            <p class="type-text">{{unidadMedicion}}</p>
+            <hr>
+            <h5 class="type-text gray-text">Tipo de indicador (familia)</h5>
+            <p class="type-text">{{tipoIndicador}}</p>
+            <hr>
+            <h5 class="type-text gray-text">Nivel de desagregación (nacional, regional, sectorial)</h5>
+            <p class="type-text">{{nivelDesagregacion}}</p>
+            <hr>
+            <h5 class="type-text gray-text">Período (y frecuencia) de disponibilidad</h5>
+            <p class="type-text">{{perdiodoDisponibilidad}}</p>
+            <hr>
+        </div>
+        <div class="col-lg-4">
+            <div class="tarjeta">
+                <div class="tarjeta-image">
+                    <img alt="Foto ficha indicador" src="./assets/images/tarjeta.jpg">
+                </div>
+                <div class="tarjeta-datos">
+                    <h5 class="type-text">Ficha indicador</h5>
+                    <div class="type-text">Documento</div>
+                    <div class="type-text">PDF | 11.3KB</div>
+                    <a [href]="fichaUrl" target="_blank" download>
+                        <button class="btn btn-dark type-text ">Descargar</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>

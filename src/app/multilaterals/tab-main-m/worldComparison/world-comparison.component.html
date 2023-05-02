@@ -1,0 +1,131 @@
+<br>
+<div *ngIf="loadingworld">
+    <img class="loading" src="./././assets/loading/loading.gif">
+</div>
+<article class="container" *ngIf="!loadingworld">
+    <form>
+        <section>
+            <div class="row row-cols-sm-2 row-cols-md-2 row-cols-lg-3">
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label>Año</label>
+                        <mat-form-field>
+                            <mat-label>Seleccionar ...</mat-label>
+                            <mat-select multiple [formControl]="aniosWorld">
+                                <mat-select-trigger>
+                                    {{aniosWorld.value ? aniosWorld.value[0] : ''}}
+                                    <span *ngIf="aniosWorld.value?.length > 1" class="example-additional-selection">
+                                        (+{{aniosWorld.value.length - 1}} {{aniosWorld.value?.length === 2 ? 'otro' :
+                                        'otros'}})
+                                    </span>
+                                </mat-select-trigger>
+                                <mat-option (click)="getFiltrosAplicados(year, year, 'A')"
+                                    *ngFor="let year of yearsWorld" [value]="year">{{year}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label id="comparadoWorld">Perú comparado con:</label>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button class="type-text14" value="1" checked>País</mat-radio-button>
+                            <mat-radio-button class="type-text14" value="2">Grupo de países</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label id="paisWorld">País</label>
+                        <mat-form-field>
+                            <mat-label id="seleccioneWorld">Seleccione ...</mat-label>
+                            <mat-select multiple [formControl]="paisesWorld">
+                                <mat-select-trigger>
+                                    {{paisesWorld.value ? paisesWorld.value[0] : ''}}
+                                    <span *ngIf="paisesWorld.value?.length > 1" class="example-additional-selection">
+                                        (+{{paisesWorld.value.length - 1}} {{paisesWorld.value?.length === 2 ? 'otro' :
+                                        'otros'}})
+                                    </span>
+                                </mat-select-trigger>
+                                <mat-option (click)="getFiltrosAplicados(country.code, country.name, 'P')"
+                                    *ngFor="let country of countriesWorld"
+                                    [value]="country.name">{{country.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <mat-form-field class="example-chip-list contenedor-control-Chip">
+                <label>Filtros aplicados:</label>
+                <mat-chip-list #chipList>
+                    <mat-chip *ngFor="let select of selectToChips" [selectable]="selectable" [removable]="removable"
+                        (removed)="removeChip(select)">
+                        {{select.valor}}
+                        <button matChipRemove *ngIf="removable">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-form-field>
+            <div hidden class="row mb-3" style="margin-top: 2.5%;">
+                <div class="col col-lg-2">
+                    <button [disabled]="inactiveButtonWorld" (click)="graficarWorld()"
+                        class="btn-graficar btn-graficar-large">Graficar</button>
+                </div>
+            </div>
+        </section>
+        <div class="alert alert-secondary mt-3 text-center" *ngIf="alertMessageWorld">
+            <mat-icon>info</mat-icon>
+            <p class="type-text" style="text-align: center;">Seleccione año y país para visualizar la gráfica.</p>
+        </div>
+        <section *ngIf="!alertMessageWorld">
+            <div class="mt-5">
+                <div class="row form-inline">
+                    <div class="col">
+                        <nav>
+                            <div class="nav nav-tabs pull-right" id="myTabWorld" role="tablist">
+                                <li id="barraWorld" class="nav-item" role="presentation">
+                                    <button class="nav-link active type-text" id="tab-bar-world" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-bar-world" type="button" role="tab"
+                                        aria-controls="graphic-tab-bar-world" aria-selected="true">Barra</button>
+                                </li>
+                                <li id="lienaWorld" class="nav-item" role="presentation">
+                                    <button class="nav-link type-text" id="tab-line" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-line" type="button" role="tab"
+                                        aria-controls="graphic-tab-line" aria-selected="false">Línea</button>
+                                </li>
+                                <li id="tablaWorld" class="nav-item" role="presentation">
+                                    <button class="nav-link type-text" id="tab-table" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-table" type="button" role="tab"
+                                        aria-controls="graphic-tab-table" aria-selected="false">Tabla</button>
+                                </li>
+                            </div>
+                        </nav>
+                        <h3 class="title-tab">Comparativa Mundial</h3>
+                    </div>
+                </div>
+                <div class="tab-content border-control-tab" id="myTabContent">
+                    <div class="tab-pane  show active p-3" id="graphic-tab-bar-world" role="tabpanel"
+                        aria-labelledby="tab-bar-world" tabindex="0">
+                        <br>
+                        <div class="row">
+                            <div [chart]="barChartWorld" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-3" id="graphic-tab-line" role="tabpanel" aria-labelledby="tab-line"
+                        tabindex="0">
+                        <br>
+                        <div class="row">
+                            <div [chart]="lineChartWorld" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-3" id="graphic-tab-table" role="tabpanel" aria-labelledby="tab-table"
+                        tabindex="0">
+                        <div class="table-responsive" [innerHTML]="tableHtmlWorld"></div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </section>
+    </form>
+</article>

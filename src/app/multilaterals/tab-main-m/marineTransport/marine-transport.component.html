@@ -1,0 +1,147 @@
+<br>
+<div *ngIf="loadingMarine">
+    <img class="loading" src="./././assets/loading/loading.gif">
+</div>
+<article class="container" *ngIf="!loadingMarine">
+    <form [formGroup]="formGraficarMarine!" *ngIf="formGraficarMarine">
+        <section>
+            <div class="row row-cols-sm-2 row-cols-md-2 row-cols-lg-4">
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label>Año</label>
+                        <mat-form-field>
+                            <mat-label>Seleccionar ...</mat-label>
+                            <mat-select multiple [formControl]="aniosMarine">
+                                <mat-select-trigger>
+                                    {{aniosMarine.value ? aniosMarine.value[0] : ''}}
+                                    <span *ngIf="aniosMarine.value?.length > 1" class="example-additional-selection">
+                                        (+{{aniosMarine.value.length - 1}} {{aniosMarine.value?.length === 2 ? 'otro' :
+                                        'otros'}})
+                                    </span>
+                                </mat-select-trigger>
+                                <mat-option (click)="getFiltrosAplicadosMarine(yearMarine, yearMarine, 'A')"
+                                    *ngFor="let yearMarine of yearsMarine"
+                                    [value]="yearMarine">{{yearMarine}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label id="comparadoMarine">Perú comparado con:</label>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button class="type-text14" value="1" checked>País</mat-radio-button>
+                            <mat-radio-button class="type-text14" value="2">Grupo de países</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label id="paisMarine">País</label>
+                        <mat-form-field>
+                            <mat-label id="seleccineMedida">Seleccione ...</mat-label>
+                            <mat-select multiple [formControl]="paisesMarine">
+                                <mat-select-trigger>
+                                    {{paisesMarine.value ? paisesMarine.value[0] : ''}}
+                                    <span *ngIf="paisesMarine.value?.length > 1" class="example-additional-selection">
+                                        (+{{paisesMarine.value.length - 1}} {{paisesMarine.value?.length === 2 ? 'otro'
+                                        : 'otros'}})
+                                    </span>
+                                </mat-select-trigger>
+                                <mat-option
+                                    (click)="getFiltrosAplicadosMarine(countryMarine.code, countryMarine.name, 'P')"
+                                    *ngFor="let countryMarine of countriesMarine"
+                                    [value]="countryMarine.name">{{countryMarine.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label>Indicador</label>
+                        <mat-form-field>
+                            <mat-select (selectionChange)="changeSelectorMarine()" name="medida"
+                                formControlName="cboMedida">
+                                <mat-option *ngFor="let itemMarine of medidaFiltrado" [value]="itemMarine">
+                                    {{itemMarine}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <mat-form-field class="example-chip-list contenedor-control-Chip">
+                <label>Filtros aplicados:</label>
+                <mat-chip-list #chipList>
+                    <mat-chip *ngFor="let selectMarine of selectToChipsMarine" [selectable]="selectableMarine"
+                        [removable]="removableMarine" (removed)="removeChipMarine(selectMarine)">
+                        {{selectMarine.valor}}
+                        <button matChipRemove *ngIf="removableMarine">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-form-field>
+            <div hidden class="row mb-3" style="margin-top: 2.5%;">
+                <div class="col col-lg-2">
+                    <button [disabled]="inactiveButtonMarine" (click)="graficarMarine()"
+                        class="btn-graficar btn-graficar-large">Graficar</button>
+                </div>
+            </div>
+        </section>
+        <div class="alert alert-secondary mt-3 text-center" *ngIf="alertMessageMarine">
+            <mat-icon>info</mat-icon>
+            <p class="type-text" style="text-align: center;">Seleccione año, país e indicador para visualizar la
+                gráfica.</p>
+        </div>
+        <section *ngIf="!alertMessageMarine">
+            <div class="mt-5">
+                <div class="row form-inline">
+                    <div class="col">
+                        <nav>
+                            <div class="nav nav-tabs pull-right" id="myTabMarine" role="tablist">
+                                <li id="barraMarine" class="nav-item" role="presentation">
+                                    <button class="nav-link active type-text" id="tab-bar-marine" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-bar-marine" type="button" role="tab"
+                                        aria-controls="graphic-tab-bar-marine" aria-selected="true">Barra</button>
+                                </li>
+                                <li id="lineaMarine" class="nav-item" role="presentation">
+                                    <button class="nav-link type-text" id="tab-line" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-line" type="button" role="tab"
+                                        aria-controls="graphic-tab-line" aria-selected="false">Línea</button>
+                                </li>
+                                <li id="tablaMarine" class="nav-item" role="presentation">
+                                    <button class="nav-link type-text" id="tab-table" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-table" type="button" role="tab"
+                                        aria-controls="graphic-tab-table" aria-selected="false">Tabla</button>
+                                </li>
+                            </div>
+                        </nav>
+                        <h3 class="title-tab">{{nameGraphicMarine}}</h3>
+                    </div>
+                </div>
+                <div class="tab-content border-control-tab" id="myTabContent">
+                    <div class="tab-pane  show active p-3" id="graphic-tab-bar-marine" role="tabpanel"
+                        aria-labelledby="tab-bar-marine" tabindex="0">
+                        <br>
+                        <div class="row">
+                            <div [chart]="barChartMarine" style="width: 98%;"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-3" id="graphic-tab-line" role="tabpanel" aria-labelledby="tab-line"
+                        tabindex="0">
+                        <br>
+                        <div class="row">
+                            <div [chart]="lineChartMarine" style="width: 98%;"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-3" id="graphic-tab-table" role="tabpanel" aria-labelledby="tab-table"
+                        tabindex="0">
+                        <div class="table-responsive" [innerHTML]="tableHtmlMarine"></div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </section>
+    </form>
+</article>

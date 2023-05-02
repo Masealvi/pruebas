@@ -1,0 +1,173 @@
+<br>
+<div *ngIf="loadingComparative">
+    <img class="loading" src="./././assets/loading/loading.gif">
+</div>
+<article class="container" *ngIf="!loadingComparative">
+    <form [formGroup]="formGraficarComparative!" *ngIf="formGraficarComparative">
+        <section>
+            <div class="row row-cols-sm-2 row-cols-md-2 row-cols-lg-4">
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label>Año</label>
+                        <mat-form-field>
+                            <mat-label>Seleccionar ...</mat-label>
+                            <mat-select multiple [formControl]="aniosComparative">
+                                <mat-select-trigger>
+                                    {{aniosComparative.value ? aniosComparative.value[0] : ''}}
+                                    <span *ngIf="aniosComparative.value?.length > 1"
+                                        class="example-additional-selection">
+                                        (+{{aniosComparative.value.length - 1}} {{aniosComparative.value?.length === 2 ?
+                                        'otro' : 'otros'}})
+                                    </span>
+                                </mat-select-trigger>
+                                <mat-option
+                                    (click)="getFiltrosAplicadosComparative(yearComparative, yearComparative, 'A')"
+                                    *ngFor="let yearComparative of yearsComparative"
+                                    [value]="yearComparative">{{yearComparative}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label id="comparadoComparative">Perú comparado con:</label>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button class="type-text14" value="1" checked>País</mat-radio-button>
+                            <mat-radio-button class="type-text14" value="2">Grupo de países</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label id="paisComparative">País</label>
+                        <mat-form-field>
+                            <mat-label id="seleccioneComparative">Seleccione ...</mat-label>
+                            <mat-select multiple [formControl]="paisesComparative">
+                                <mat-select-trigger>
+                                    {{paisesComparative.value ? paisesComparative.value[0] : ''}}
+                                    <span *ngIf="paisesComparative.value?.length > 1"
+                                        class="example-additional-selection">
+                                        (+{{paisesComparative.value.length - 1}} {{paisesComparative.value?.length === 2
+                                        ? 'otro' : 'otros'}})
+                                    </span>
+                                </mat-select-trigger>
+                                <mat-option
+                                    (click)="getFiltrosAplicadosComparative(countryComparative.code, countryComparative.name, 'P')"
+                                    *ngFor="let countryComparative of countriesComparative"
+                                    [value]="countryComparative.name">{{countryComparative.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label>Seleccione medida</label>
+                        <mat-form-field>
+                            <mat-select (selectionChange)="changeSelectorComparative()" name="medida"
+                                formControlName="cboMedida">
+                                <mat-option *ngFor="let itemComparative of medidaFiltrado" [value]="itemComparative">
+                                    {{itemComparative}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <mat-form-field class="example-chip-list contenedor-control-Chip">
+                <label>Filtros aplicados:</label>
+                <mat-chip-list #chipList>
+                    <mat-chip *ngFor="let selectComparative of selectToChipsComparative"
+                        [selectable]="selectableComparative" [removable]="removableComparative"
+                        (removed)="removeChipComparative(selectComparative)">
+                        {{selectComparative.valor}}
+                        <button matChipRemove *ngIf="removableComparative">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-form-field>
+            <div hidden class="row mb-3" style="margin-top: 2.5%;">
+                <div class="col col-lg-2">
+                    <button [disabled]="inactiveButtonComparative" (click)="graficarComparativo()"
+                        class="btn-graficar btn-graficar-large">Graficar</button>
+                </div>
+            </div>
+        </section>
+        <div class="alert alert-secondary mt-3 text-center" *ngIf="alertMessageComparative">
+            <mat-icon>info</mat-icon>
+            <p class="type-text" style="text-align: center;">Seleccione año, país y medida para visualizar la gráfica.
+            </p>
+        </div>
+        <section *ngIf="!alertMessageComparative">
+            <div class="mt-5">
+                <div class="row form-inline">
+                    <div class="col">
+                        <nav>
+                            <div class="nav nav-tabs pull-right" id="myTabComparative" role="tablist">
+                                <li id="columnaComparative" class="nav-item" role="presentation">
+                                    <button class="nav-link active type-text" id="tab-column-comp" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-column-comp" type="button" role="tab"
+                                        aria-controls="graphic-tab-column-comp" aria-selected="true">Columna</button>
+                                </li>
+                                <li id="lineaComparative" class="nav-item" role="presentation">
+                                    <button class="nav-link type-text" id="tab-line" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-line" type="button" role="tab"
+                                        aria-controls="graphic-tab-line" aria-selected="false">Línea</button>
+                                </li>
+                                <li id="tablaComparative" class="nav-item" role="presentation">
+                                    <button class="nav-link type-text" id="tab-table" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-table" type="button" role="tab"
+                                        aria-controls="graphic-tab-table" aria-selected="false">Tabla</button>
+                                </li>
+                            </div>
+                        </nav>
+                        <h3 class="title-tab">{{nameGraphicComparative}}</h3>
+                    </div>
+                </div>
+                <div class="tab-content border-control-tab" id="myTabContent">
+                    <div class="tab-pane  show active p-3" id="graphic-tab-column-comp" role="tabpanel"
+                        aria-labelledby="tab-column-comp" tabindex="0">
+                        <div class="row form-inline">
+                            <div class="col-sm-12">
+                                <div class="form-group" style="float: right;">
+                                    <label class="pr-2 type-text">Ordenar por</label>
+                                    <select class="form-control" (change)="graficarComparativo()"
+                                        formControlName="cboOrden">
+                                        <option [value]="_aKeys.score">Puntuación obtenida</option>
+                                        <option [value]="_aKeys.rank">Posición en el ranking</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div [chart]="columnChartComparative" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-3" id="graphic-tab-line" role="tabpanel" aria-labelledby="tab-line"
+                        tabindex="0">
+                        <div class="row form-inline">
+                            <div class="col-sm-12">
+                                <div class="form-group" style="float: right;">
+                                    <label class="pr-2 type-text">Ordenar por</label>
+                                    <select class="form-control" (change)="graficarComparativo()"
+                                        formControlName="cboOrden">
+                                        <option [value]="_aKeys.score">Puntuación obtenida</option>
+                                        <option [value]="_aKeys.rank">Posición en el ranking</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div [chart]="lineChartComparative" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-3" id="graphic-tab-table" role="tabpanel" aria-labelledby="tab-table"
+                        tabindex="0">
+                        <div class="table-responsive" [innerHTML]="tableHtmlComparative"></div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </section>
+    </form>
+</article>

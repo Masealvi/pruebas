@@ -1,0 +1,30 @@
+<br>
+
+
+    <article class="container">
+
+
+
+        <br>
+        <section>
+            <br>
+            <div class="col col-lg-12 left">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link type-text" [routerLink]="graphic" [routerLinkActiveOptions]="{exact: true}"
+                            routerLinkActive="active">Gráficas</a>
+                    </li>
+                    <li class="na-item">
+                        <a class="nav-link type-text" [routerLink]="table" [routerLinkActiveOptions]="{exact: true}"
+                            routerLinkActive="active">Tabla de datos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link type-text" [routerLink]="sheet" [routerLinkActiveOptions]="{exact: true}"
+                            routerLinkActive="active">Ficha</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <app-graphics (miEvento)="metodoPadre($event)" ></app-graphics> -->
+            <router-outlet></router-outlet> <!-- recrear todos los com. hijos -->
+        </section>
+    </article>

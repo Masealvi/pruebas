@@ -1,0 +1,126 @@
+<br>
+<div *ngIf="loadingMeasures">
+    <img class="loading" src="./././assets/loading/loading.gif">
+</div>
+<article class="container" *ngIf="!loadingMeasures">
+    <form>
+        <section>
+            <div class="row row-cols-sm-2 row-cols-md-2 row-cols-lg-3">
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label>Año</label>
+                        <mat-form-field>
+                            <mat-label>Seleccionar ...</mat-label>
+                            <mat-select name="medida" [formControl]="aniosMeasures">
+                                <mat-option (click)="getFiltrosAplicados(yearMeasures, yearMeasures, 'A')"
+                                    *ngFor="let yearMeasures of yearsMeasures"
+                                    [value]="yearMeasures">{{yearMeasures}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label id="comparadoMedida">Perú comparado con:</label>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button class="type-text14" value="1" checked>País</mat-radio-button>
+                            <mat-radio-button class="type-text14" value="2">Grupo de países</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="contenedor-control h-100">
+                        <label id="paisMedida">País</label>
+                        <mat-form-field>
+                            <mat-label id="seleccioneMedida">Seleccione ...</mat-label>
+                            <mat-select multiple [formControl]="paisesMeasures">
+                                <mat-select-trigger>
+                                    {{paisesMeasures.value ? paisesMeasures.value[0] : ''}}
+                                    <span *ngIf="paisesMeasures.value?.length > 1" class="example-additional-selection">
+                                        (+{{paisesMeasures.value.length - 1}} {{paisesMeasures.value?.length === 2 ?
+                                        'otro' : 'otros'}})
+                                    </span>
+                                </mat-select-trigger>
+                                <mat-option
+                                    (click)="getFiltrosAplicados(countryMeasures.code, countryMeasures.name, 'P')"
+                                    *ngFor="let countryMeasures of countriesMeasures"
+                                    [value]="countryMeasures.name">{{countryMeasures.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <mat-form-field class="example-chip-list contenedor-control-Chip">
+                <label>Filtros aplicados:</label>
+                <mat-chip-list #chipList>
+                    <mat-chip *ngFor="let selectMeasures of selectToChips" [selectable]="selectable"
+                        [removable]="removable" (removed)="removeChip(selectMeasures)">
+                        {{selectMeasures.valor}}
+                        <button matChipRemove *ngIf="removable">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-form-field>
+            <div hidden class="row mb-3" style="margin-top: 2.5%;">
+                <div class="col col-lg-2">
+                    <button [disabled]="inactiveButtonMeasures" (click)="graficarMeasures()"
+                        class="btn-graficar btn-graficar-large">Graficar</button>
+                </div>
+            </div>
+        </section>
+        <div class="alert alert-secondary mt-3 text-center" *ngIf="alertMessageMeasures">
+            <mat-icon>info</mat-icon>
+            <p class="type-text" style="text-align: center;">Seleccione año y país para visualizar la gráfica.</p>
+        </div>
+        <section *ngIf="!alertMessageMeasures">
+            <div class="mt-5">
+                <div class="row form-inline">
+                    <div class="col">
+                        <nav>
+                            <div class="nav nav-tabs pull-right" id="myTabMeasures" role="tablist">
+                                <li id="diamanteMedida" class="nav-item" role="presentation">
+                                    <button class="nav-link active type-text" id="tab-diam-med" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-diam-med" type="button" role="tab"
+                                        aria-controls="graphic-tab-diam-med" aria-selected="true">Diamente</button>
+                                </li>
+                                <li id="barraMedida" class="nav-item" role="presentation">
+                                    <button class="nav-link type-text" id="tab-bar" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-bar" type="button" role="tab"
+                                        aria-controls="graphic-tab-bar" aria-selected="false">Barra</button>
+                                </li>
+                                <li id="tablaMedida" class="nav-item" role="presentation">
+                                    <button class="nav-link type-text" id="tab-table" data-bs-toggle="tab"
+                                        data-bs-target="#graphic-tab-table" type="button" role="tab"
+                                        aria-controls="graphic-tab-table" aria-selected="false">Tabla</button>
+                                </li>
+                            </div>
+                        </nav>
+                        <h3 class="title-tab">Comparación por medidas</h3>
+                    </div>
+                </div>
+                <div class="tab-content border-control-tab" id="myTabContent">
+                    <div class="tab-pane  show active p-3" id="graphic-tab-diam-med" role="tabpanel"
+                        aria-labelledby="tab-diam-med" tabindex="0">
+                        <br>
+                        <div class="row">
+                            <div [chart]="radialChartMeasures" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-3" id="graphic-tab-bar" role="tabpanel" aria-labelledby="tab-bar"
+                        tabindex="0">
+                        <br>
+                        <div class="row">
+                            <div [chart]="barChartMeasures" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-3" id="graphic-tab-table" role="tabpanel" aria-labelledby="tab-table"
+                        tabindex="0">
+                        <div class="table-responsive" [innerHTML]="tableHtmlMeasures"></div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </section>
+    </form>
+</article>

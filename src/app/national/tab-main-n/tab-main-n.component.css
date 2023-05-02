@@ -1,0 +1,29 @@
+.type-text{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+  }
+
+  .nav-tabs{
+    border-bottom-color: #121212;
+    border-bottom-width: initial;
+    padding-bottom: 0;
+  }
+  .nav-link{
+    color: #0056ac;
+    
+    font-weight: 500;
+  }
+  .nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: #121212;
+    background-color: #fff;
+    border-color: #121212 #121212 #fff;
+    border-radius: 0;
+    border-right-color: #121212;
+    border-right-width: medium;
+    border-top-color: #121212;
+    border-top-width: medium;
+    border-left-color: #121212;
+    border-left-width: medium;
+    margin-bottom: -3px;
+}

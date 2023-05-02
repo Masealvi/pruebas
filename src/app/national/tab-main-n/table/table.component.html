@@ -1,0 +1,806 @@
+<br>
+
+
+<section *ngIf="codes=='1.1.1' || codes=='1.1.2' || codes=='1.1.3' || codes=='2.3.1'
+|| codes=='2.3.2'|| codes=='2.4.1' || codes=='2.4.2'">
+    <div class="row col-12 d-flex justify-content-between">
+
+
+        <!--
+        <div class="col-12 col-md-3 contenedor-control">
+            <label for="">Año</label>
+            <mat-form-field>
+                <mat-label class="type-text ">Todas</mat-label>
+                <mat-select [(ngModel)]="filtroOne" >
+                    <mat-option class="type-text " (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text " value="{{item}}" *ngFor="let item of dataDate2">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+
+        </div>
+
+    -->
+        <div [formGroup]="formForYears" class="col-12 col-md-3 contenedor-control">
+            <label for=""><strong>Rango de Fechas</strong></label>
+            <mat-form-field style="width: 100%; ">
+
+                <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate formControlName="start" placeholder="Desde" [readonly]="true">
+                    <input matEndDate formControlName="end" placeholder="Hasta" [readonly]="true">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker startView="multi-year" #picker></mat-date-range-picker>
+            </mat-form-field>
+        </div>
+        <!--
+        <div class="col-12 col-md-4 mt-3 mt-md-0 contenedor-control">
+
+            <label for="">Departamento</label>
+            <mat-form-field>
+                <mat-label class="type-text ">Todas</mat-label>
+                <mat-select [(ngModel)]="filtroTwo">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataEnterprise2">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+-->
+        <div *ngIf="codes=='1.1.1' || codes=='1.1.2' || codes=='1.1.3'" [formGroup]="formForCompany" class="col-12 col-md-4 mt-3 mt-md-0 contenedor-control">
+            <label for=""><strong>Departamento</strong> </label>
+            <mat-form-field>
+                <mat-label>Todas</mat-label>
+                <mat-select formControlName="dataEnterprise">
+                    <mat-option (click)="listarTodo()" class="type-text">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataEnterprise2">{{item}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div *ngIf="codes=='2.3.1' || codes=='2.3.2' || codes=='2.4.1'|| codes=='2.4.2'  " [formGroup]="formForCompany" class="col-12 col-md-4 mt-3 mt-md-0 contenedor-control">
+            <label for=""><strong>Vía de Transporte</strong> </label>
+            <mat-form-field>
+                <mat-label>Todas</mat-label>
+                <mat-select formControlName="dataEnterprise">
+                    <mat-option (click)="listarTodo()" class="type-text">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataEnterprise2">{{item}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <!--
+            <button mat-raised-button class="btn-buscar type-text  "
+                (click)="filterByYearAndCompany(filtroOne,filtroTwo)">Buscar</button>
+                -->
+        </div>
+    </div>
+
+    <br>
+    <div *ngIf="codes=='1.1.1' || codes=='1.1.2' || codes=='1.1.3'" class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="type-text colorthtd " *ngFor="let item of tableHead ">{{item}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item2 of tableBody  | slice:desde:hasta ">
+                    <td class="type-text colorthtd ">{{item2[0]}}</td>
+                    <td class="type-text colorthtd ">{{item2[1]}}</td>
+                    <td class="type-text colorthtd">{{item2[2]}}</td>
+                    <td class="type-text colorthtd">{{item2[3]}}</td>
+                    <td class="type-text colorthtd">{{item2[4]}}</td>
+                    <td class="type-text colorthtd">{{item2[5]}}</td>
+                    <td class="type-text colorthtd">{{item2[6]}}</td>
+                    <td class="type-text colorthtd">{{item2[7]}}</td>
+                    <td class="type-text colorthtd">{{item2[8]}}</td>
+                    <td class="type-text colorthtd">{{item2[0]}}</td>
+                    <td class="type-text colorthtd">{{item2[10]}}</td>
+                    <td class="type-text colorthtd">{{item2[11]}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div *ngIf="codes=='2.3.1'|| codes=='2.3.2'|| codes=='2.4.1'|| codes=='2.4.2'" class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="type-text colorthtd " *ngFor="let item of tableHead ">{{item}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item2 of tableBody  | slice:desde:hasta ">
+                    <td class="type-text colorthtd ">{{item2[0]}}</td>
+                    <td class="type-text colorthtd ">{{item2[1]}}</td>
+                    <td class="type-text colorthtd">{{item2[2]}}</td>
+                    <td class="type-text colorthtd">{{item2[3]}}</td>
+                    <td class="type-text colorthtd">{{item2[4]}}</td>
+                    <td class="type-text colorthtd">{{item2[5]}}</td>
+                    <td class="type-text colorthtd">{{item2[6]}}</td>
+                    <td class="type-text colorthtd">{{item2[7]}}</td>
+                    <td class="type-text colorthtd">{{item2[8]}}</td>
+                    <td class="type-text colorthtd">{{item2[0]}}</td>
+                    <td class="type-text colorthtd">{{item2[10]}}</td>
+                    <td class="type-text colorthtd">{{item2[11]}}</td>
+                    <td class="type-text colorthtd">{{item2[12]}}</td>
+                    <td class="type-text colorthtd">{{item2[13]}}</td>
+                    <td class="type-text colorthtd">{{item2[14]}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <mat-paginator [length]="tableBody.length" [pageSize]="pageSize" (page)="cambiarPagina($event)"
+        aria-label="Select page">
+    </mat-paginator>
+    <br>
+</section>
+<section *ngIf="codes=='3.13.1'|| codes=='1.6'">
+
+    <div *ngIf="codes=='3.13.1'" class="row col-12 d-flex justify-content-between">
+
+        <!--
+        <div class="col-12 col-md-3 contenedor-control">
+            <label for=""><strong>Anual</strong></label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select [(ngModel)]="filtroOne" >
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}" *ngFor="let item of dataDate">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+-->
+        <div [formGroup]="formForYears" class="col-12 col-md-3 contenedor-control">
+            <label for=""><strong>Rango de Fechas</strong></label>
+            <mat-form-field style="width: 100%; ">
+
+                <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate formControlName="start" placeholder="Desde" [readonly]="true">
+                    <input matEndDate formControlName="end" placeholder="Hasta" [readonly]="true">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker startView="multi-year" #picker></mat-date-range-picker>
+            </mat-form-field>
+        </div>
+
+        <!--
+        <div class="col-12 col-md-4 mt-3 mt-md-0 contenedor-control">
+            <label for=""><strong>Entidad</strong></label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select [(ngModel)]="filtroTwo">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataEnterprise">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+-->
+        <div [formGroup]="formForCompany" class="col-12 col-md-4 mt-3 mt-md-0 contenedor-control">
+            <label for=""><strong>Entidad</strong> </label>
+            <mat-form-field>
+                <mat-label>Todas</mat-label>
+                <mat-select formControlName="dataEnterprise">
+                    <mat-option (click)="listarTodo()" class="type-text">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataEnterprise">{{item}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <!--
+            <button mat-raised-button class="btn-buscar type-text"
+                (click)="filterByYearAndCompany(filtroOne,filtroTwo)">Buscar</button>
+            -->
+        </div>
+
+
+
+    </div>
+
+    <div *ngIf="codes=='1.6'" class="row col-12 d-flex justify-content-between">
+
+        <div class="col-12 col-md-4">
+            <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label class="type-text">Seleccione año</mat-label>
+                <mat-select [(ngModel)]="filtroOne">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}" *ngFor="let item of dataDate2">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label class="type-text">Seleccione aeropuerto</mat-label>
+                <mat-select [(ngModel)]="filtroTwo">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataEnterprise2">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <button mat-raised-button class="btn-buscar type-text">Buscar</button>
+        </div>
+
+
+
+    </div>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="colorthtd" *ngFor="let item of tableHead ">{{item}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item2 of tableBody | slice:desde:hasta ">
+                    <td class="colorthtd">{{item2[0]}}</td>
+                    <td class="colorthtd">{{item2[1]}}</td>
+                    <td class="colorthtd">{{item2[2]}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <mat-paginator [length]="tableBody.length" [pageSize]="pageSize" (page)="cambiarPagina($event)"
+        aria-label="Select page">
+    </mat-paginator>
+    <br>
+</section>
+
+<section *ngIf=" codes=='3.13.2' || codes=='3.13.4' || codes=='3.13.3'">
+
+    <div *ngIf=" codes=='3.13.2' || codes=='3.13.4'" class="row col-12 d-flex justify-content-between">
+
+        <!--
+        <div *ngIf=" codes=='3.13.2' || codes=='3.13.4'" class="col-12 col-md-3 contenedor-control">
+            <label for=""><strong>Anual</strong></label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select [(ngModel)]="filtroOne" >
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}" *ngFor="let item of dataDate2">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+-->
+        <div [formGroup]="formForYears" *ngIf=" codes=='3.13.2' || codes=='3.13.4'"
+            class="col-12 col-md-3 contenedor-control">
+            <label for=""><strong>Rango de Fechas</strong></label>
+            <mat-form-field style="width: 100%; ">
+
+                <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate formControlName="start" placeholder="Desde" [readonly]="true">
+                    <input matEndDate formControlName="end" placeholder="Hasta" [readonly]="true">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker startView="multi-year" #picker></mat-date-range-picker>
+            </mat-form-field>
+        </div>
+
+        <div [formGroup]="formForCompany" *ngIf="  codes=='3.13.4'"
+            class="col-12 col-md-4 mt-3 mt-md-0 contenedor-control">
+            <label for=""><strong>Entidad</strong></label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select formControlName="dataEnterprise">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataEnterprise2">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <!--
+            <button mat-raised-button class="btn-buscar type-text"
+                (click)="filterByYearAndCompany(filtroOne,filtroTwo)">Buscar</button>
+            -->
+        </div>
+    </div>
+    <div *ngIf=" codes=='3.13.3'" class="row col-12 d-flex justify-content-between">
+
+        <div class="col-12 col-md-3 contenedor-control">
+            <label for="">Año</label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select [(ngModel)]="filtroOne">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}" *ngFor="let item of dataDate2">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="col-12 col-md-4 mt-3 mt-md-0 contenedor-control">
+            <label for="">Región</label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select [(ngModel)]="filtroTwo">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataEnterprise2">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <button mat-raised-button class="btn-buscar type-text">Buscar</button>
+        </div>
+    </div>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="colorthtd" *ngFor="let item of tableHead ">{{item}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item2 of tableBody | slice:desde:hasta ">
+                    <td class="colorthtd">{{item2[0]}}</td>
+                    <td class="colorthtd">{{item2[1]}}</td>
+                    <td class="colorthtd">{{item2[2]}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <mat-paginator [length]="tableBody.length" [pageSize]="pageSize" (page)="cambiarPagina($event)"
+        aria-label="Select page">
+    </mat-paginator>
+    <br>
+
+</section>
+
+<section *ngIf="codes=='5.2' || codes=='5.3'">
+    <div class="row col-12 d-flex justify-content-between" *ngIf="!ocultarDiv">
+
+        <!--
+        <div [formGroup]="formForYears" class="col-12 col-md-2 contenedor-control">
+            <label><strong>Anual</strong></label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select [(ngModel)]="filtroOne" >
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}" *ngFor="let item of dataDate">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+    -->
+        <div [formGroup]="formForYears2" class="col-12 col-md-3 contenedor-control">
+            <label for=""><strong>Rango de Fechas</strong></label>
+            <mat-form-field style="width: 100%; ">
+
+                <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate formControlName="start" placeholder="Desde" [readonly]="true">
+                    <input matEndDate formControlName="end" placeholder="Hasta" [readonly]="true">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker startView="multi-year" #picker></mat-date-range-picker>
+            </mat-form-field>
+        </div>
+
+
+        <div [formGroup]="formFordataGeiAll" class="col-12 col-md-3 mt-3 mt-md-0 contenedor-control">
+            <label for=""><strong>Nivel De Gestión De GEI Alcanzado</strong></label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select formControlName="dataGeiAll">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}" *ngFor="let item of dataGeiAll">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div [formGroup]="formFordataNameClass" class="col-12 col-md-3 mt-3 mt-md-0 contenedor-control">
+            <label for=""><strong>Nombre de la clase / Código CIIU</strong></label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select formControlName="dataNameClass">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataNameClass">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div [formGroup]="formFordataEnterprise" class="col-12 col-md-2 mt-3 mt-md-0 contenedor-control">
+            <label><strong>Empresas</strong></label>
+            <mat-form-field>
+
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select formControlName="dataEnterprise">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataEnterprise">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="col-12 col-md-0 mt-3 mt-md-0">
+            <!--
+            <button mat-raised-button class="btn-buscar type-text"
+                (click)="filterByfourLabels(filtroOne,filtroTwo,filtroThree,filtroFour)">Buscar</button>
+            -->
+        </div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-end" style="margin-bottom: -16px;margin-right: 15px;">
+        <nav class="ms-auto">
+            <div class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active type-text " (click)="ocultarDiv = false" id="tab-bar"
+                        data-bs-toggle="tab" data-bs-target="#graphic-tab-bar" type="button" role="tab"
+                        aria-controls="graphic-tab-bar" aria-selected="true">Tabla 1</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link type-text" (click)="ocultarDiv = true" id="tab-column" data-bs-toggle="tab"
+                        data-bs-target="#graphic-tab-column" type="button" role="tab" aria-controls="graphic-tab-column"
+                        aria-selected="false">tabla
+                        2</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link type-text" (click)="ocultarDiv = true" id="tab-line" data-bs-toggle="tab"
+                        data-bs-target="#graphic-tab-line" type="button" role="tab" aria-controls="graphic-tab-line"
+                        aria-selected="false">Tabla
+                        3</button>
+                </li>
+            </div>
+        </nav>
+    </div>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane  show active p-3" id="graphic-tab-bar" role="tabpanel" aria-labelledby="tab-bar"
+            tabindex="0">
+
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="colorthtd" *ngFor="let item of tablePerson">{{item}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item2 of tableBody | slice:desde:hasta ">
+                            <td class="colorthtd">{{item2[0]}}</td>
+                            <td class="colorthtd">{{item2[1]}}</td>
+                            <td class="colorthtd">{{item2[2]}}</td>
+                            <td class="colorthtd">{{item2[3]}}</td>
+                            <td class="colorthtd">{{item2[4]}}</td>
+                            <td class="colorthtd">{{item2[5]}}</td>
+                            <td class="colorthtd">{{item2[6]}}</td>
+                            <td class="colorthtd">{{item2[7]}}</td>
+                            <td class="colorthtd">{{item2[8]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <mat-paginator [length]="tableBody.length" [pageSize]="pageSize" (page)="cambiarPagina($event)"
+                aria-label="Select page">
+            </mat-paginator>
+            <br>
+        </div>
+        <div class="tab-pane  p-3" id="graphic-tab-column" role="tabpanel" aria-labelledby="tab-column" tabindex="0">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="colorthtd" *ngFor="let item of tableMedicion ">{{item}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item2 of tableSerie2 | slice:desde:hasta">
+                            <td class="colorthtd">{{item2[0]}}</td>
+                            <td class="colorthtd">{{item2[1]}}</td>
+                            <td class="colorthtd">{{item2[2]}}</td>
+                            <td class="colorthtd">{{item2[3]}}</td>
+                            <td class="colorthtd">{{item2[4]}}</td>
+                            <td class="colorthtd">{{item2[5]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <mat-paginator [length]="tableSerie2.length" [pageSize]="pageSize" (page)="cambiarPagina($event)"
+                aria-label="Select page">
+            </mat-paginator>
+            <br>
+        </div>
+        <div class="tab-pane  p-3" id="graphic-tab-line" role="tabpanel" aria-labelledby="tab-line" tabindex="0">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="colorthtd" *ngFor="let item of tableReduccion ">{{item}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item2 of tableSerie3 | slice:desde:hasta">
+                            <td class="colorthtd">{{item2[0]}}</td>
+                            <td class="colorthtd">{{item2[1]}}</td>
+                            <td class="colorthtd">{{item2[2]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <mat-paginator [length]="tableSerie3.length" [pageSize]="pageSize" (page)="cambiarPagina($event)"
+                aria-label="Select page">
+            </mat-paginator>
+            <br>
+        </div>
+    </div>
+</section>
+<section *ngIf="codes=='2.1'">
+    <div class="row col-12 d-flex justify-content-between">
+
+        <!--
+        <div class="col-12 col-md-3 contenedor-control">
+            <label for=""><strong>Anual</strong></label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select [(ngModel)]="filtroOne">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataFechaFirma">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+    -->
+        <div [formGroup]="formForFechaFirma" class="col-12 col-md-3 contenedor-control">
+            <label for=""><strong>Rango de Fechas</strong></label>
+            <mat-form-field style="width: 100%; ">
+
+                <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate formControlName="start" placeholder="Desde" [readonly]="true">
+                    <input matEndDate formControlName="end" placeholder="Hasta" [readonly]="true">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker startView="multi-year" #picker></mat-date-range-picker>
+            </mat-form-field>
+        </div>
+        <!--
+        <div class="col-12 col-md-4 mt-3 mt-md-0 contenedor-control">
+            <label for=""><strong>Sistema Armonizado</strong></label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select [(ngModel)]="filtroTwo">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataAcuerdo">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+    -->
+    <div [formGroup]="formForSistemaArmonizado" class="col-12 col-md-4 mt-3 mt-md-0 contenedor-control">
+        <label for=""><strong>Sistema Armonizado</strong></label>
+        <mat-form-field>
+            <mat-label class="type-text">Todas</mat-label>
+            <mat-select formControlName="sistemaArmonizado">
+                <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                <mat-option class="type-text" value="{{item}}" *ngFor="let item of dataAcuerdo">{{item}}</mat-option>
+
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <!--
+            <button mat-raised-button class="btn-buscar type-text"
+                (click)="filterByYearAndCompany(filtroOne,filtroTwo)">Buscar</button>
+
+                -->
+        </div>
+    </div>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="colorthtd" *ngFor="let item of tableHead">{{item}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item2 of tableBody | slice:desde:hasta ">
+
+                    <td class="colorthtd wrap-text">{{item2[0]}}</td>
+                    <td class="colorthtd wrap-text">{{item2[1]}}</td>
+                    <td class="colorthtd wrap-text">{{item2[2]}}</td>
+                    <td class="colorthtd wrap-text">{{item2[3]}}</td>
+                    <td class="colorthtd wrap-text">{{item2[4]}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <mat-paginator [length]="tableBody.length" [pageSize]="pageSize" (page)="cambiarPagina($event)"
+        aria-label="Select page">
+    </mat-paginator>
+    <br>
+</section>
+
+<section *ngIf="codes=='2.12'">
+
+    <div *ngIf="codes =='2.12'" class="row col-12 d-flex justify-content-between">
+
+        <!--
+        <div *ngIf="codes =='2.12'" class="col-12 col-md-3 contenedor-control">
+
+            <mat-form-field>
+                <mat-label class="type-text ">Seleccione año</mat-label>
+                <mat-select [(ngModel)]="filtroOne">
+                    <mat-option class="type-text " (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text " value="{{item}}" *ngFor="let item of dataDate2">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+        </div>
+-->
+        <div [formGroup]="formForYears3" class="col-12 col-md-3 contenedor-control">
+            <label for=""><strong>Rango de Fechas</strong></label>
+            <mat-form-field style="width: 100%; ">
+
+                <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate formControlName="start" placeholder="Desde" [readonly]="true">
+                    <input matEndDate formControlName="end" placeholder="Hasta" [readonly]="true">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker startView="multi-year" #picker></mat-date-range-picker>
+            </mat-form-field>
+        </div>
+        <br>
+        <!--
+        <div *ngIf="codes =='2.12'" class="col-12 col-md-3 contenedor-control">
+
+            <mat-form-field>
+                <mat-label class="type-text ">Seleccione País Destino</mat-label>
+                <mat-select [(ngModel)]="filtroTwo">
+                    <mat-option class="type-text " (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text " value="{{item}}"
+                        *ngFor="let item of dataEnterprise2">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+
+        </div>
+-->
+        <div *ngIf="codes =='2.12'" [formGroup]="formForPaisDestino" class="col-12 col-md-3 contenedor-control">
+            <label for=""><strong>Seleccione País Destino</strong></label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select formControlName="PaisDestino">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataEnterprise2">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+        <!--
+<div *ngIf="codes =='2.12'" class="col-12 col-md-3 contenedor-control">
+
+            <mat-form-field>
+                <mat-label class="type-text ">Seleccione Subpartida</mat-label>
+                <mat-select [(ngModel)]="filtroThree">
+                    <mat-option class="type-text " (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text " value="{{item}}"
+                        *ngFor="let item of dataFiltro3">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+
+        </div>
+
+        -->
+
+        <div *ngIf="codes =='2.12'" [formGroup]="formForSubpartida" class="col-12 col-md-3 contenedor-control">
+            <label><strong>Seleccione Subpartida</strong></label>
+            <mat-form-field>
+                <mat-label class="type-text">Todas</mat-label>
+                <mat-select formControlName="Subpartida">
+                    <mat-option class="type-text" (click)="listarTodo()">Todas</mat-option>
+                    <mat-option class="type-text" value="{{item}}"
+                        *ngFor="let item of dataFiltro3">{{item}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div *ngIf="codes=='2.12'" class="col-12 col-md-2 mt-3 mt-md-0">
+            <!--
+            <button mat-raised-button class="btn-buscar type-text"
+                >Buscar</button>
+            -->
+
+        </div>
+    </div>
+    <br>
+    <div *ngIf="codes=='2.12'">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="colorthtd" *ngFor="let item of tableHead ">{{item}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item2 of tableBody  | slice:desde:hasta ">
+                        <td class="colorthtd wrap-text">{{item2[0]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[1]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[2]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[3]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[4]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[5]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[7]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[8]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[9]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[10]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[11]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[12]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[13]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[14]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[15]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[16]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[17]}}</td>
+                        <td class="colorthtd wrap-text">{{item2[18]}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <mat-paginator [length]="tableBody.length" [pageSize]="pageSize" (page)="cambiarPagina($event)"
+            aria-label="Select page">
+        </mat-paginator>
+    </div>
+
+
+</section>

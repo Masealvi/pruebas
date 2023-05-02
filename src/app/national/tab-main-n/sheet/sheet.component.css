@@ -1,0 +1,26 @@
+.tarjeta{
+    width: 100%;
+    max-width: 80rem;
+    padding: 20px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    border-radius: 2rem;
+ }
+
+ .tarjeta-image{
+    padding: 10px;
+ }
+
+.tarjeta-datos{
+    padding: 20px;
+ }
+
+ .type-text{
+   font-family: 'Roboto', sans-serif, system-ui;
+ 
+   font-size: 16px;
+ }
+ .gray-text {
+   color: #7f7f7f; /* Valor de color gris */
+ }

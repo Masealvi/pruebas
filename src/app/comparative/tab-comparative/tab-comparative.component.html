@@ -1,0 +1,643 @@
+<br>
+<div class="container">
+    <div class="section-izquierda">
+
+        <div>
+            <div class="contenedor-control">
+                <label><strong>Categoria</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="sentidadTipoId" (selectionChange)="onSelect($event.value)">
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'entidadTipoId')"
+                            *ngFor="let item of operator" value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="contenedor-control" [class.disabled]="!enableMoneda">
+                <label><strong>Moneda</strong></label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="monedaId" id="monedaId" [disabled]="!enableMoneda" value="2">
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'monedaId')"
+                            *ngFor="let item of dolarSoles" value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!--
+            <div *ngIf="arrayDatos[0]?.length>1">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label *ngIf="labels">{{labels[0]}}</mat-label>
+                    <mat-select #miselect00  [id]="arrayDatos[0][1]"  (click)="buscar()" value="">
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,arrayDatos[0][1])"
+                            *ngFor="let item of arrayDatos[0][0]" value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="arrayDatos[1]?.length>1">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label *ngIf="labels">{{labels[1]}}</mat-label>
+                    <mat-select  >
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,arrayDatos[1][1])"
+                            *ngFor="let item of arrayDatos[1][0]" value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="arrayDatos[2]?.length>1">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label *ngIf="labels">{{labels[2]}}</mat-label>
+                    <mat-select  >
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,arrayDatos[2][1])"
+                            *ngFor="let item of arrayDatos[2][0]" value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div *ngIf="arrayDatos[3]?.length>1">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label *ngIf="labels">{{labels[3]}}</mat-label>
+                    <mat-select  >
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,arrayDatos[3][1])"
+                            *ngFor="let item of arrayDatos[3][0]" value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="arrayDatos[4]?.length>1">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label *ngIf="labels">{{labels[4]}}</mat-label>
+                    <mat-select >
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,arrayDatos[4][1])"
+                            *ngFor="let item of arrayDatos[4][0]" value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="arrayDatos[5]?.length>1">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label *ngIf="labels">{{labels[5]}}</mat-label>
+                    <mat-select [(value)]="arrayDatos[5][1]"  >
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,arrayDatos[5][1])"
+                            *ngFor="let item of arrayDatos[5][0]" value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="arrayDatos[6]?.length>1">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label *ngIf="labels">{{labels[6]}}</mat-label>
+                    <mat-select  >
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,arrayDatos[6][1])"
+                            *ngFor="let item of arrayDatos[6][0]" value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="arrayDatos[7]?.length>1">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label *ngIf="labels">{{labels[7]}}</mat-label>
+                    <mat-select  >
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,arrayDatos[7][1])"
+                            *ngFor="let item of arrayDatos[7][0]" value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="arrayDatos[8]?.length>1">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label *ngIf="labels">{{labels[8]}}</mat-label>
+                    <mat-select  >
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,arrayDatos[8][1])"
+                            *ngFor="let item of arrayDatos[8][0]" value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        -->
+            <!--
+                ********************************************NUEVO*********************************************
+            -->
+
+
+            <div *ngIf="misDatosSelect['tipoComercioId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect["tipoComercioId"]}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="tipoComercioId" (click)="buscar()" value="">
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'tipoComercioId')"
+                            *ngFor="let item of misDatosSelect['tipoComercioId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['opeTipOpeCircunscripcionId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['opeTipOpeCircunscripcionId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="opeTipOpeCircunscripcionId">
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'opeTipOpeCircunscripcionId')"
+                            *ngFor="let item of misDatosSelect['opeTipOpeCircunscripcionId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['tipoServicioId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['tipoServicioId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="tipoServicioId">
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'tipoServicioId')"
+                            *ngFor="let item of misDatosSelect['tipoServicioId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div *ngIf="misDatosSelect['termPortAeropId']?.length>1" class="contenedor-control ">
+                <label *ngIf="labels"><strong>{{labelsSelect['termPortAeropId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="termPortAeropId">
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'termPortAeropId')"
+                            *ngFor="let item of misDatosSelect['termPortAeropId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['tipoCargaId']?.length>1" class="contenedor-control ">
+                <label *ngIf="labels"><strong>{{labelsSelect['tipoCargaId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="tipoCargaId">
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'tipoCargaId')"
+                            *ngFor="let item of misDatosSelect['tipoCargaId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['tipoViaProcedId']?.length>1" class="contenedor-control ">
+                <label *ngIf="labels"> <strong>{{labelsSelect['tipoViaProcedId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="tipoViaProcedId">
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'tipoViaProcedId')"
+                            *ngFor="let item of misDatosSelect['tipoViaProcedId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['modTranspId']?.length>1" class="contenedor-control ">
+                <label *ngIf="labels"><strong>{{labelsSelect['modTranspId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="modTranspId">
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'modTranspId')"
+                            *ngFor="let item of misDatosSelect['modTranspId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['origenPaisId']?.length>1" class="contenedor-control ">
+                <label *ngIf="labels"><strong>{{labelsSelect['origenPaisId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="origenPaisId">
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'origenPaisId')"
+                            *ngFor="let item of misDatosSelect['origenPaisId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['modoTransporteId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['modoTransporteId']}}</strong> </label>
+                <mat-form-field>
+
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="modoTransporteId">
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'modoTransporteId')"
+                            *ngFor="let item of misDatosSelect['modoTransporteId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="misDatosSelect['tipoEnvioId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['tipoEnvioId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="tipoEnvioId">
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'tipoEnvioId')"
+                            *ngFor="let item of misDatosSelect['tipoEnvioId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['tipoVehiculoId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['tipoVehiculoId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="tipoVehiculoId">
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'tipoVehiculoId')"
+                            *ngFor="let item of misDatosSelect['tipoVehiculoId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['lineaNavieraId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['lineaNavieraId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="lineaNavieraId">
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'lineaNavieraId')"
+                            *ngFor="let item of misDatosSelect['lineaNavieraId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['categoriaId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['categoriaId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="categoriaId">
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'categoriaId')"
+                            *ngFor="let item of misDatosSelect['categoriaId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['destinoPaisId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['destinoPaisId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="destinoPaisId">
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'destinoPaisId')"
+                            *ngFor="let item of misDatosSelect['destinoPaisId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="misDatosSelect['origenZonaId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['origenZonaId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="origenZonaId">
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'origenZonaId')"
+                            *ngFor="let item of misDatosSelect['origenZonaId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="misDatosSelect['destinoZonaId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['destinoZonaId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="destinoZonaId">
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'destinoZonaId')"
+                            *ngFor="let item of misDatosSelect['destinoZonaId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="misDatosSelect['puertoOrigenId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['puertoOrigenId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="puertoOrigenId">
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'puertoOrigenId')"
+                            *ngFor="let item of misDatosSelect['puertoOrigenId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['puertoDestinoId']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['puertoDestinoId']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="puertoDestinoId">
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'puertoDestinoId')"
+                            *ngFor="let item of misDatosSelect['puertoDestinoId']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="misDatosSelect['denominacionServicio']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['denominacionServicio']}}</strong> </label>
+                <mat-form-field>
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="denominacionServicio">
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'denominacionServicio')"
+                            *ngFor="let item of misDatosSelect['denominacionServicio']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="misDatosSelect['ciudadOrigen']?.length>1" class="contenedor-control">
+                <label *ngIf="labels"><strong>{{labelsSelect['ciudadOrigen']}}</strong> </label>
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Seleccionar ...</mat-label>
+                    <mat-select [(value)]="ciudadOrigen">
+
+                        <mat-option (click)="getFiltrosAplicados(item.id,item.nombre,'ciudadOrigen')"
+                            *ngFor="let item of misDatosSelect['ciudadOrigen']"
+                            value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!--
+                *****************************************************************************************
+            -->
+
+
+            <div class="row" [hidden]="!categoriaSeleccionada">
+
+                <div class="col-4">
+                    <button mat-raised-button class="btn-limpiar type-text" (click)="limpiar()"><strong>Limpiar</strong>
+                    </button>
+                </div>
+
+
+
+                <div class="col-8">
+                    <button mat-raised-button class="btn-buscar type-text" (click)="buscar()"><strong>Ver
+                            Resultados</strong> </button>
+
+                </div>
+
+
+            </div>
+            <br>
+            <div>
+                <div *ngIf="!categoriaSeleccionada">
+                    <button mat-raised-button class="btn-buscar2 type-text" (click)="buscar()"
+                        [disabled]="disabledBtn"><strong>Ver
+                            Resultados</strong> </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <!-- Sección 2 -->
+    <div class="section-derecha">
+
+        <div>
+
+            <h1 class="type-text-titleCom ">Comparativo de costos logísticos</h1>
+            <br>
+            <span class="type-text">Esta herramienta te permite calcular y calcular los costos aproximados
+                asociados a los procesos de comercio exterior
+            </span>
+            <br>
+            <hr>
+            <div class="row">
+                <div class="col-12">
+                    <mat-label><strong>{{contadorSelectChips}} Filtros aplicados</strong></mat-label>
+                    <mat-form-field class="example-chip-list">
+
+                        <mat-chip-list #chipList>
+                            <mat-chip *ngFor="let item of selectToChips" [selectable]="selectable"
+                                [removable]="removable" (removed)="removeChip(item)">
+                                {{item.valor}}
+                                <button matChipRemove *ngIf="removable">
+                                    <mat-icon>cancel</mat-icon>
+                                </button>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </mat-form-field>
+                </div>
+
+            </div>
+            <hr>
+            <div class="alert alert-secondary mt-2 text-center" *ngIf="mostrarAviso">
+
+                <p class="botones-align-center type-text ">
+                    <mat-icon>info</mat-icon>Seleccione los criterios del formulario que
+                    necesite para obtener
+                    resultados!!!!!!!
+                </p>
+            </div>
+            <div class="row col-12" *ngIf="!mostrarAviso">
+                <div>
+                    <br>
+                    <h3>
+                        Mostrando <strong>{{desdeEmpresa}}</strong>
+                        a <strong>{{contadorEmpresa > 8 ? hastaEmpresa : contadorEmpresa}}</strong>
+                        de <strong>{{contadorEmpresa}}</strong>
+                        Resultados
+                    </h3>
+                </div>
+
+                <div class="row ml-auto" style="display: flex; justify-content: space-between; align-items: center">
+                    <!--
+                    <h3 style="margin-left: 410px; margin-top: 20px;">Ordenar:</h3>
+                    <select class="form-select" (change)="ordenamiento($event)">
+                        <option value="Z-a" selected>Ranking de Costos</option>
+                        <option value="A-z">Alfabeticamente(A-z)</option>
+                        <option value="Z-a">Alfabeticamente(Z-a)</option>
+
+
+
+                    </select>-->
+                    <!---->
+                    <mat-label class="type-text margen-label">Ordenar por:</mat-label>
+                    <div class="contenedor-control">
+
+                        <mat-form-field>
+
+                            <mat-select [(ngModel)]="selectedValue" (selectionChange)="ordenamiento(selectedValue)">
+                                <mat-option class="type-text" value="Z-a">Ranking de Costos</mat-option>
+                                <mat-option class="type-text" value="A-z">Alfabeticamente(A-z)</mat-option>
+                                <mat-option class="type-text" value="Z-a">Alfabeticamente(Z-a)</mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div *ngFor="let item of ordenarData" class="empresas">
+                <div class="directori">
+                    <h3 class="text-black font-bold type-text">{{item.razonSocial}}</h3>
+
+                </div>
+
+
+                <div style="display: flex; align-items: center;justify-content: flex-start; margin-bottom: 10px">
+                    <hr>
+                    <!--
+                    <a style="color:#0056AC; margin-right: 10px; ;display: block; ">
+                        <h4 class="type-text" style="margin-top: 10px;"><strong>Ver empresa</strong> </h4>
+                    </a>
+-->
+                    <button style="margin-right: 10px; color:#0056AC; ; " class="btnVerEmpresa type-text"
+                    (click)="verEmpresa(item.id,item.razonSocial)"   data-bs-toggle="modal" 
+                    data-bs-target="#exampleModal" mat-raised-button>
+                      <strong>Ver empresa</strong>  
+                    </button>
+
+
+                    <button style="margin-right: 10px;" class="btn-informacion type-text botones-align-center"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal" mat-raised-button
+                        (click)="verEmpresa(item.id,item.razonSocial)">
+                        <mat-icon>arrow_forward</mat-icon>
+                    </button>
+
+                </div>
+
+
+
+            </div>
+            <mat-paginator [length]="adminConce.length" [pageSize]="pageSize" (page)="cambiarPaginaEmpresa($event)"
+                aria-label="Select page">
+            </mat-paginator>
+            <router-outlet></router-outlet>
+
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable " style="max-width: 600px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <div class="row col-12">
+
+
+                            <div class="col-9">
+
+                                <h2 class="type-text-titleCom2">{{getRazonSocial}}</h2>
+
+                                <h3>Mostrando <strong>{{desde}}</strong>
+                                    a <strong>{{contadorServicios> 8 ? hasta : contadorServicios}}</strong> de
+                                    <strong>{{contadorServicios}}</strong>
+                                    Servicios
+                                </h3>
+                            </div>
+
+                            <div class="col-3" style="left: 110px;">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Cerrar">X</button>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="modal-body" id="tabla">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="colorthtd" scope="col">Servicio</th>
+                                    <th class="colorthtd" scope="col">Descripción</th>
+                                    <th class="colorthtd" scope="col">Moneda</th>
+                                    <th class="colorthtd" scope="col">Precio</th>
+                                    <th class="colorthtd" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="fila" *ngFor="let item of serviciosEmpresa | slice:desde:hasta">
+                                    <td class="colorthtd">{{item.denominacionServicio}}</td>
+                                    <td class="colorthtd">{{item.descripcion}}</td>
+                                    <td class="colorthtd">{{item.moneda}}</td>
+                                    <td class="colorthtd">{{item.precio}}</td>
+                                    <td>
+                                        <div style="display: flex; align-items: center;justify-content: flex-start;">
+                                            <hr>
+                                            <!--
+                                            <a style="color:#0056AC; margin-right: 10px; ;display: block; ">
+                                                <h4 class="type-text" style="margin-top: 10px;"><strong>Ver en
+                                                        MISLO</strong> </h4>
+                                            </a>
+-->
+                                            <button style="margin-right: 10px; color:#0056AC; "
+                                                class="btnVermislo type-text" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal" mat-raised-button>
+                                               Ver en Mislo
+                                            </button>
+
+
+                                            <button style="margin-right: 10px;"
+                                                class="btn-informacion type-text botones-align-center"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal" mat-raised-button>
+                                                <mat-icon>arrow_forward</mat-icon>
+                                            </button>
+
+                                        </div>
+                                    </td>
+
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <mat-paginator [length]="serviciosEmpresa.length" [pageSize]="pageSize"
+                        (page)="cambiarPagina($event)" aria-label="Select page">
+                    </mat-paginator>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <div class="d-flex">
+                            <div class="ml-auto">
+                                <button (click)="imprimir()" type="button" mat-raised-button
+                                    class="btn-limpiar type-text">
+                                    <span style="display: inline-flex; align-items: center;">
+                                        Imprimir<mat-icon style="margin-left: 5px;">print</mat-icon>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ml-auto">
+                                <button data-bs-dismiss="modal" type="button" mat-raised-button
+                                    class="btn-buscar type-text"><strong>Cerrar</strong></button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
