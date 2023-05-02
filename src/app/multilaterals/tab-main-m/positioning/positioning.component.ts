@@ -12,7 +12,7 @@ import { ITEM_PERU, ITEM_TODOS } from 'src/app/utils/constantes';
 @Component({
   selector: 'app-positioning',
   templateUrl: './positioning.component.html',
-  styleUrls: ['./positioning.component.css']
+  styleUrls: ['./positioning.component.css'],
 })
 export class PositioningComponent implements OnInit {
   formGraficarPositioning?: FormGroup;
@@ -22,7 +22,7 @@ export class PositioningComponent implements OnInit {
   aniosPositioning = new FormControl();
   loadingPositioning: boolean = true;
 
-  _aKeys: any = { score: "3", rank: "4" };
+  _aKeys: any = { score: '3', rank: '4' };
 
   yearsPositioning: any;
   countriesPositioning: any;
@@ -48,27 +48,37 @@ export class PositioningComponent implements OnInit {
 
   ngOnInit(): void {
     this.codesPositioning = this.route.snapshot.paramMap.get('codigo');
-    localStorage.setItem(KEY_PARAM_ML, JSON.stringify({ graphic: this.codesPositioning }));
+    localStorage.setItem(
+      KEY_PARAM_ML,
+      JSON.stringify({ graphic: this.codesPositioning })
+    );
     this.sendCodeService.onChangeIndicador$.next(this.codesPositioning);
     this.getIndicatorMultilateralPositioning(this.codesPositioning);
   }
 
-  private getIndicatorMultilateralPositioning(code: string) {
-    this.indicadorMultilateralService.getIndicatorMultilateralByCode(code).subscribe(
-      (response) => {
+  public getIndicatorMultilateralPositioning(code: string) {
+    this.indicadorMultilateralService
+      .getIndicatorMultilateralByCode(code)
+      .subscribe((response) => {
         this.nameIndicatorPositioning = response.nombreIndicador;
         this.dataPosicionamiento = response.data[1]; // data
-        this.yearsPositioning = Utilidades.getYears(this.dataPosicionamiento.series, 0)
-        this.countriesPositioning = Utilidades.getCountries(this.dataPosicionamiento.series, 1);
+        this.yearsPositioning = Utilidades.getYears(
+          this.dataPosicionamiento.series,
+          0
+        );
+        this.countriesPositioning = Utilidades.getCountries(
+          this.dataPosicionamiento.series,
+          1
+        );
         this.countriesPositioning.unshift(ITEM_TODOS);
-        this.loadingPositioning = this.nameIndicatorPositioning == null ? true : false;
-      }
-    );
+        this.loadingPositioning =
+          this.nameIndicatorPositioning == null ? true : false;
+      });
   }
 
   private crarFormularioPositioning(): void {
     this.formGraficarPositioning = this.fb.group({
-      cboOrden: [this._aKeys.score]
+      cboOrden: [this._aKeys.score],
     });
   }
 
@@ -78,8 +88,16 @@ export class PositioningComponent implements OnInit {
   selectToChipsPositioning: any[] = [];
 
   removeChipPositioning(seleccionado: any) {
-    Utilidades.removeChip(this.selectToChipsPositioning, seleccionado, this.paisesPositioning, this.aniosPositioning)
-    this.inactiveButtonPositioning = !(this.selectToChipsPositioning.some(e => e.tipo === 'A') && this.selectToChipsPositioning.some(e => e.tipo === 'P'));
+    Utilidades.removeChip(
+      this.selectToChipsPositioning,
+      seleccionado,
+      this.paisesPositioning,
+      this.aniosPositioning
+    );
+    this.inactiveButtonPositioning = !(
+      this.selectToChipsPositioning.some((e) => e.tipo === 'A') &&
+      this.selectToChipsPositioning.some((e) => e.tipo === 'P')
+    );
     if (!this.inactiveButtonPositioning) {
       this.graficarPositioning();
     } else {
@@ -89,38 +107,61 @@ export class PositioningComponent implements OnInit {
   //END CHIPS
 
   getFiltrosAplicadosPositioning(code: any, value: any, strTipo: string) {
-    if (code == ITEM_TODOS.code) { // ALL
-      let _index = this.paisesPositioning.value.findIndex((e: any) => e === ITEM_TODOS.name);
+    if (code == ITEM_TODOS.code) {
+      // ALL
+      let _index = this.paisesPositioning.value.findIndex(
+        (e: any) => e === ITEM_TODOS.name
+      );
       // retirar paises de select
       this.paisesPositioning.value.length = 0;
       // retirar los paises de chips
-      this.selectToChipsPositioning = this.selectToChipsPositioning.filter(e => e.tipo !== strTipo);
+      this.selectToChipsPositioning = this.selectToChipsPositioning.filter(
+        (e) => e.tipo !== strTipo
+      );
       // Seleccionado
       if (_index > -1) {
         this.countriesPositioning.forEach((e: any) => {
-          this.paisesPositioning.value.push(e.name)
-          this.selectToChipsPositioning.push({ code: e.code, valor: e.name, tipo: strTipo });
+          this.paisesPositioning.value.push(e.name);
+          this.selectToChipsPositioning.push({
+            code: e.code,
+            valor: e.name,
+            tipo: strTipo,
+          });
         });
       }
       this.paisesPositioning.patchValue(this.paisesPositioning.value); // check | uncheck
 
       if (this.paisesPositioning.value.length > 0) {
         // retirar el pais ALL
-        _index = this.paisesPositioning.value.findIndex((e: any) => e === ITEM_TODOS.name);
+        _index = this.paisesPositioning.value.findIndex(
+          (e: any) => e === ITEM_TODOS.name
+        );
         this.paisesPositioning.value.splice(_index, 1);
         // retirar de chips
-        _index = this.selectToChipsPositioning.findIndex((e: any) => e.valor === ITEM_TODOS.name);
+        _index = this.selectToChipsPositioning.findIndex(
+          (e: any) => e.valor === ITEM_TODOS.name
+        );
         this.selectToChipsPositioning.splice(_index, 1);
       }
     } else {
-      let resultado = this.selectToChipsPositioning.find(e => e.code === code) ?? null;
+      let resultado =
+        this.selectToChipsPositioning.find((e) => e.code === code) ?? null;
       if (resultado == null) {
-        this.selectToChipsPositioning.push({ code: code, valor: value, tipo: strTipo });
+        this.selectToChipsPositioning.push({
+          code: code,
+          valor: value,
+          tipo: strTipo,
+        });
       } else {
-        this.selectToChipsPositioning = this.selectToChipsPositioning.filter(e => e.code !== code);
+        this.selectToChipsPositioning = this.selectToChipsPositioning.filter(
+          (e) => e.code !== code
+        );
       }
     }
-    this.inactiveButtonPositioning = !(this.selectToChipsPositioning.some(e => e.tipo === 'A') && this.selectToChipsPositioning.some(e => e.tipo === 'P'));
+    this.inactiveButtonPositioning = !(
+      this.selectToChipsPositioning.some((e) => e.tipo === 'A') &&
+      this.selectToChipsPositioning.some((e) => e.tipo === 'P')
+    );
     if (!this.inactiveButtonPositioning) {
       this.graficarPositioning();
     }
@@ -129,20 +170,31 @@ export class PositioningComponent implements OnInit {
   //botón graficar
   graficarPositioning(): void {
     this.alertMessagePositioning = false;
-    let itemSearch = this.formGraficarPositioning?.get("cboOrden")?.value;
+    let itemSearch = this.formGraficarPositioning?.get('cboOrden')?.value;
     // process.
     let aFiltro = [...this.selectToChipsPositioning];
     aFiltro.unshift(ITEM_PERU);
-    aFiltro.push({ code: itemSearch, valor: itemSearch, tipo: "G" });
+    aFiltro.push({ code: itemSearch, valor: itemSearch, tipo: 'G' });
 
-    let aDataOrdenaPositioning = Utilidades.orderArray(this.getDataLeaked(aFiltro), 0);
+    let aDataOrdenaPositioning = Utilidades.orderArray(
+      this.getDataLeaked(aFiltro),
+      0
+    );
 
     //grafica de barra
-    this.barChartPositioning = Graficas.generateBarChart(aDataOrdenaPositioning);
+    this.barChartPositioning = Graficas.generateBarChart(
+      aDataOrdenaPositioning
+    );
     //grafica de linea
-    this.lineChartPositioning = Graficas.generateLineChart(aDataOrdenaPositioning, false);
+    this.lineChartPositioning = Graficas.generateLineChart(
+      aDataOrdenaPositioning,
+      false
+    );
     //grafica table
-    this.tableHtmlPositioning = Graficas.generateTable(this.tableValuePositioning, this.nameIndicatorPositioning);
+    this.tableHtmlPositioning = Graficas.generateTable(
+      this.tableValuePositioning,
+      this.nameIndicatorPositioning
+    );
   }
 
   getDataLeaked(data: any[]) {
@@ -186,7 +238,12 @@ export class PositioningComponent implements OnInit {
 
     for (let index = 0; index < arrayFiltradoPositioning.length; index++) {
       let valor: number;
-      valor = parseFloat(arrayFiltradoPositioning[index].slice(posMedidaPositioning, posMedidaPositioning + 1));
+      valor = parseFloat(
+        arrayFiltradoPositioning[index].slice(
+          posMedidaPositioning,
+          posMedidaPositioning + 1
+        )
+      );
       newFiltradoPositioning[index].push(valor);
     }
     return newFiltradoPositioning;
